@@ -1,7 +1,7 @@
-import appHeader from "./apps/cmps/app-header.cmp.js"
-import appFooter from "./apps/cmps/app-footer.cmp.js"
+import appHeader from "./cmps/app-header.cmp.js"
+import appFooter from "./cmps/app-footer.cmp.js"
 
-import {router} from "./routes.js";
+import { router } from "./routes.js";
 
 const options = {
     el: '#app',
