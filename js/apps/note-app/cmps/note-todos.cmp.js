@@ -5,7 +5,7 @@ export default {
 <section class="note-todos">
 <h3>{{info.label}} </h3>
 <ul> <li v-for="todo in info.todos" :key="todo.id" @click="toggleDone(todo.id)" :class="{done:!todo.doneAt, undone:todo.doneAt}">
-     {{todo.txt}} <button @click="removeListElement(todo.id)"> x </button>
+     {{todo.txt}} <button @click.stop="removeListElement(todo.id)"> x </button>
 </li> </ul>
 
 </section>

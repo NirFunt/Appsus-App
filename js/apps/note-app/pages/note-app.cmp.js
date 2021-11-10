@@ -39,8 +39,10 @@ export default {
 
     },
     methods: {
-        toggleTodo(todoId, index) {
-
+        toggleTodo(noteIdAndTodoId) {
+            noteService.toogleDone(noteIdAndTodoId)
+            .then (()=>noteService.query()
+            .then(notes => this.notes = notes));
         },
         removeTodo(noteIdAndTodoId) {
             noteService.removeToDo(noteIdAndTodoId)

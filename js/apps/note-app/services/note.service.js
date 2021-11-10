@@ -8,7 +8,8 @@ export const noteService = {
   getNoteById,
   editNote,
   addNote,
-  removeToDo
+  removeToDo,
+  toogleDone
 }
 
 const NOTES_KEY = 'notes';
@@ -58,6 +59,18 @@ function removeToDo ({noteId, todoId}) {
   )
 }
 
+function toogleDone ({noteId, todoId}) {
+  return getNoteById(noteId)
+  .then (note => {
+    const index = note.info.todos.findIndex(todo => todo.id === todoId);
+    console.log(note.info.todos[index].dontAt)
+    if(note.info.todos[index].dontAt) note.info.todos[index].dontAt = null;
+    else note.info.todos[index].dontAt = Date.now();
+    saveNote(note);
+  }
+  )
+}
+
 function _createNotes() {
   notes = storageService.loadFromStorage(NOTES_KEY)
   if (!notes || !notes.length) {
@@ -80,7 +93,9 @@ function _createNotes() {
         id: utilService.makeId(), type: "note-todos", info: {
           label: "Get my stuff together", todos: [
             { id:utilService.makeId(), txt: "Driving liscence", doneAt: null },
-            { id:utilService.makeId(), txt: "Coding power", doneAt: 187111111 }]
+            { id:utilService.makeId(), txt: "aaaaa", doneAt: null },
+            { id:utilService.makeId(), txt: "Coding power", doneAt: 187111111 },
+            { id:utilService.makeId(), txt: "ccccc", doneAt: 187111111 }]
         }
       },
       {
