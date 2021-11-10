@@ -11,12 +11,13 @@ const options = {
         appFooter
     },
     template: `
-        <section>
+        <section class="main-section">
             <app-header/>
             <!-- <user-msg/> -->
             <router-view/>
             <app-footer/>
         </section>
+        
     `,
 
 };

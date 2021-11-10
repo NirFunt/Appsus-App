@@ -1,0 +1,14 @@
+@import "/css/parts/base.css";
+@import "/css/cmps/header.css";
+@import "/css/pages/home-page.css";
+@import "/css/pages/about-page.css";
+@import "/css/cmps/footer.css";
+
+
+.main-section {
+    height: 100vh;
+}
+
+
+
+
