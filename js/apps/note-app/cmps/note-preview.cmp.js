@@ -1,9 +1,11 @@
 export default {
-    template: `
-    
-<section class="about-page">
 
-  <h3> About us </h3>
+    props: ['note'],
+    template: `
+<section class="note-preview">
+
+  <h3> note preview </h3>
+  {{note}}
 
 </section>
     `
