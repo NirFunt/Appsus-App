@@ -16,11 +16,13 @@ export default {
     template: `
     <section class="note-app">
     <h3> Note app </h3>
+    <section class="notes-container">
    <component v-for="(note,index) in notes" :key="note.key"
    :is="note.type"
    :info="note.info"
    @onsomeemit="dosomethinghere($event,index)">
     </component>
+    </section>
     
 </section>
     `
