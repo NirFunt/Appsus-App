@@ -1,35 +1,44 @@
-import notePreview from '../cmps/note-preview.cmp.js';
+import noteTxt from '../cmps/note-txt.cmp.js';
+import noteImg from '../cmps/note-img.cmp.js';
+import noteTodos from '../cmps/note-todos.cmp.js';
+import noteVideo from '../cmps/note-video.cmp.js';
 
 import { noteService } from '../services/note.service.js';
 
 export default {
     components: {
-       notePreview ,
-        
+        noteTxt,
+        noteImg,
+        noteTodos,
+        noteVideo
     },
+
     template: `
-    
-<section class="note-app">
-    {{notes}}
+    <section class="note-app">
     <h3> Note app </h3>
-    <note-preview/>
+   <component v-for="(note,index) in notes" :key="note.key"
+   :is="note.type"
+   :info="note.info"
+   @onsomeemit="dosomethinghere($event,index)">
+    </component>
+    
 </section>
     `
     ,
     data() {
         return {
-            notes : null,
+            notes: null,
         };
     },
     created() {
         noteService.query()
-        .then (notes => this.notes = notes);
+            .then(notes => this.notes = notes);
     },
     destroyed() {
-      
+
     },
     methods: {
-     
+
     },
- 
+
 }

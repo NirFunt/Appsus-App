@@ -1,11 +1,9 @@
 export default {
 
-    props: ['note'],
+    props: ['info'],
     template: `
-<section class="note-preview">
-
-  <h3> note preview </h3>
-  {{note}}
+<section class="note-img">
+<img :src="info.url">
 
 </section>
     `

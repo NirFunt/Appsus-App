@@ -27,7 +27,8 @@ function _createNotes() {
       },
       {
         id: utilService.makeId(), type: "note-img", info: {
-          url: "http://some-img/me", title: "Bobi and Me"
+          url: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg",
+           title: "Bobi and Me"
         },
         style: {
           backgroundColor: "#00d"
@@ -38,6 +39,11 @@ function _createNotes() {
           label: "Get my stuff together", todos: [
             { txt: "Driving liscence", doneAt: null },
             { txt: "Coding power", doneAt: 187111111 }]
+        }
+      },
+      {
+        id: utilService.makeId(), type: "note-video", info: {
+          label: "This Video",  url:'https://www.youtube.com/watch?v=pgY7qYaoMWQ'
         }
       }
     ];
