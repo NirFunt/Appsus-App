@@ -2,5 +2,12 @@
     background-color: aquamarine;
     height: 90vh;
     padding: 15px;
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.home-page img{ 
+    width: 60%;
 }

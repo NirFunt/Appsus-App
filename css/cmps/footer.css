@@ -1,5 +1,6 @@
 .app-footer {
     background-color: blueviolet;
     height: 5vh;
- 
+    display: flex;
+    justify-content: center;
 }
