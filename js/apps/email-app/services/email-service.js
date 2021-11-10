@@ -1,15 +1,13 @@
 import { utilService } from '../../../services/util.service.js';
 import { storageService } from '../../../services/storage.service.js';
-import { asyncService } from './async-storage-service.js';
+import { asyncStorageService } from './async-storage-service.js';
 
-const EMAIL_KEY = 'emails';
-// _createCars();
 
 
 export const emailService = {
     _createEmails,
-    _createEmail
-    // query,
+    _createEmail,
+    query,
     // remove,
     // save,
     // getEmptyCar,
@@ -17,53 +15,50 @@ export const emailService = {
     // getNextCarId
 };
 
+const EMAIL_KEY = 'emails';
+
 const loggedinUser = {
     email: 'sayan123@appsus.com',
     fullname: 'Son Goku'
 };
+
+_createEmails()
 
 
 function _createEmails() {
     let emails = storageService.loadFromStorage(EMAIL_KEY);
     if (!emails || !emails.length) {
         emails = [];
-        emails.push(_createEmail('We ', 300));
-        emails.push(_createEmail('Fiak Ibasa', 120));
-        emails.push(_createEmail('Subali Pesha', 100));
-        emails.push(_createEmail('Mitsu Bashi', 150));
-        emails.push(_createEmail('Mitsu Bashi', 150));
-        emails.push(_createEmail('Mitsu Bashi', 150));
-        emails.push(_createEmail('Mitsu Bashi', 150));
-        emails.push(_createEmail('Mitsu Bashi', 150));
-        storageService.saveToStorage(EMAIL_KEY, cars);
+        emails.push(_createEmail('Wedding invitation', 'We are very excited ' + utilService.makeLorem(25), 'avi123@gmail.com'));
+        emails.push(_createEmail('Riot Games Presents Arcane', 'Greetins Summoners ' + utilService.makeLorem(45), 'Riotgames@gmail.com'));
+        emails.push(_createEmail('Black Friday Sales', 'Available Only For the next 40hours ' + utilService.makeLorem(25), 'asos@world.ol.com'));
+        emails.push(_createEmail('Binance Account security', 'We have recently ' + utilService.makeLorem(25), 'binance@service.com'));
+        emails.push(_createEmail('Wedding invitation ', utilService.makeLorem(25), 'avi123@gmail.com'));
+        emails.push(_createEmail('Wedding invitation ', utilService.makeLorem(25), 'avi123@gmail.com'));
+        emails.push(_createEmail('Wedding invitation ', utilService.makeLorem(25), 'avi123@gmail.com'));
+        emails.push(_createEmail('Wedding invitation ', utilService.makeLorem(25), 'avi123@gmail.com'));
+        emails.push(_createEmail('Wedding invitation ', utilService.makeLorem(25), 'avi123@gmail.com'));
+        storageService.saveToStorage(EMAIL_KEY, emails);
     }
+    console.log(emails);
     return emails;
 }
 
-function _createEmail(subject, body) {
-    return email = {
+function _createEmail(subject, body, from) {
+    return {
         id: utilService.makeId(),
         subject,
         body,
         isRead: false,
         sentAt: Date.now(),
-        to: 'sayan123@appsus.com'
+        from
     }
 
 }
 
-
-
-
-// function query(filterBy = {}) {
-//     return asyncService.query(CARS_KEY)
-//         .then(cars => {
-//             if (filterBy.topCars) {
-//                 cars = cars.slice(0, 2);
-//             }
-//             return cars;
-//         });
-// }
+function query(filterBy = {}) {
+    return asyncStorageService.query(EMAIL_KEY);
+}
 
 // function remove(carId) {
 //     // return Promise.reject('Big balagan!')

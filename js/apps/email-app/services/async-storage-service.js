@@ -1,5 +1,5 @@
 
-export const asyncService = {
+export const asyncStorageService = {
     query,
     get,
     post,
