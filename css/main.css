@@ -1,8 +1,8 @@
-@import "/css/parts/base.css";
-@import "/css/cmps/header.css";
-@import "/css/pages/home-page.css";
-@import "/css/pages/about-page.css";
-@import "/css/cmps/footer.css";
+@import "./parts/base.css";
+@import "./cmps/header.css";
+@import "./pages/home-page.css";
+@import "./pages/about-page.css";
+@import "./cmps/footer.css";
 
 
 .main-section {
