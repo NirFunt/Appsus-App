@@ -50,12 +50,12 @@ function _createNotes() {
 
   }
   storageService.save(NOTES_KEY, notes);
-
   return notes;
 }
 
 function query() {
   return asyncStorageService.query(NOTES_KEY);
+  // return Promise.resolve(notes);
 }
 
 function removeBook(noteId) {
