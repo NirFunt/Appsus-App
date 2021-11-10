@@ -1,0 +1,60 @@
+/* MAIN APP */
+
+.email-app {
+    border: 1px solid black;
+    margin: 0 auto;
+    width: 90%;
+}
+
+/* EMAIL-PREVIEW */
+
+.email-preview {}
+
+/* EMAIL LIST */
+
+.email-list {
+    margin: 0;
+    width: 90%;
+}
+
+.email-list ul {
+    margin: 0;
+}
+
+.email-list li:not(:last-child) {
+    /* margin-bottom: 10px; */
+}
+
+.email-list li {
+    /* border-top: .5px solid gray; */
+    border-bottom: .5px solid gray;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* preview-modal */
+
+.email-modal {
+    margin: 0 auto;
+    width: 90%;
+    height: 500px;
+    background-color: beige;
+    z-index: 10;
+    border-radius: 5px;
+}
+
+.modal-header {
+    color: rgb(244, 248, 240);
+    padding: 10px;
+    background-color: rgb(32, 27, 27);
+}
+
+/* FILTER-NAV */
+
+.filter-nav button:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.filter-nav {
+    padding: 10px;
+}

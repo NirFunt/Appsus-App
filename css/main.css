@@ -9,6 +9,9 @@
 @import "./apps/note/cmps/note-img.css";
 @import "./apps/note/pages/note-app.css";
 
+/* EMAIL  */
+@import "./parts/helpers.css";
+@import "./apps/email/email-style.css";
 
 .main-section {
     height: 100vh;
