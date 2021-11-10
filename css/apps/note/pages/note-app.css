@@ -1,0 +1,19 @@
+.note-app {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    /* gap: 30px; */
+    flex-wrap: wrap;
+}
+
+.note-app section {
+  border: gold 2px solid;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.undone {
+    text-decoration: none;
+}

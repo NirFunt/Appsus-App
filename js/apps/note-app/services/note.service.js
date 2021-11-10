@@ -1,13 +1,14 @@
 import { asyncStorageService } from './async-storage-service.js';
-import { storageService } from './storage.service.js';
-import { utilService } from './util.service.js';
+import { storageService } from '../../../services/storage.service.js';
+import { utilService } from '../../../services/util.service.js';
 
 export const noteService = {
   query,
-  removeBook,
+  removeNote,
   getNoteById,
   editNote,
   addNote,
+  removeToDo
 }
 
 const NOTES_KEY = 'notes';
@@ -16,8 +17,49 @@ const NOTES_KEY = 'notes';
 var notes;
 _createNotes();
 
+
+
+function query() {
+  return asyncStorageService.query(NOTES_KEY);
+  // return Promise.resolve(notes);
+}
+
+function removeNote(noteId) {
+  return asyncStorageService.remove(NOTES_KEY, noteId);
+}
+
+function getNoteById(noteId) {
+  return asyncStorageService.get(NOTES_KEY, noteId)
+}
+
+function editNote(note) {
+  return asyncStorageService.put(NOTES_KEY, note)
+}
+
+function addNote() {
+  var note = {
+
+  }
+  asyncStorageService.post(NOTES_KEY, notes);
+}
+
+function saveNote (note) {
+  return asyncStorageService.put(NOTES_KEY,note);
+}
+
+function removeToDo ({noteId, todoId}) {
+  // console.log(noteId,todoId)
+  return getNoteById(noteId)
+  .then (note => {
+    const index = note.info.todos.findIndex(todo => todo.id === todoId)
+    note.info.todos.splice(index,1);
+    saveNote(note);
+  }
+  )
+}
+
 function _createNotes() {
-  notes = storageService.load(NOTES_KEY)
+  notes = storageService.loadFromStorage(NOTES_KEY)
   if (!notes || !notes.length) {
     notes = [
       {
@@ -37,54 +79,24 @@ function _createNotes() {
       {
         id: utilService.makeId(), type: "note-todos", info: {
           label: "Get my stuff together", todos: [
-            { txt: "Driving liscence", doneAt: null },
-            { txt: "Coding power", doneAt: 187111111 }]
+            { id:utilService.makeId(), txt: "Driving liscence", doneAt: null },
+            { id:utilService.makeId(), txt: "Coding power", doneAt: 187111111 }]
         }
       },
       {
         id: utilService.makeId(), type: "note-video", info: {
-          label: "This Video",  url:'https://www.youtube.com/watch?v=pgY7qYaoMWQ'
+          label: "This Video",  url:'https://www.youtube.com/embed/tgbNymZ7vqY'
         }
       }
     ];
 
   }
-  storageService.save(NOTES_KEY, notes);
+  storageService.saveToStorage(NOTES_KEY, notes);
   return notes;
 }
 
-function query() {
-  return asyncStorageService.query(NOTES_KEY);
-  // return Promise.resolve(notes);
-}
 
-function removeBook(noteId) {
-  return asyncStorageService.remove(NOTES_KEY, noteId);
-}
 
-function getNoteById(noteId) {
-  return asyncStorageService.get(NOTES_KEY, noteId)
-}
-
-// function getNextBookId(bookId) {
-//   return query()
-//     .then(books => {
-//       const index = books.findIndex(book => book.id === bookId);
-//       return (index === books.length -1)? books[0].id: books[index+1].id
-//     })
-// }
-
-// function getPreviousBookId(bookId) {
-//   return query()
-//     .then(books => {
-//       const index = books.findIndex(book => book.id === bookId);
-//       return (index === 0)? books[books.length-1].id: books[index-1].id
-//     })
-// }
-
-function editNote(note) {
-  return asyncStorageService.put(NOTES_KEY, note)
-}
 
 
 // function getFromAPI(server,input) {
@@ -124,13 +136,3 @@ function editNote(note) {
 //    }
 
 // }
-
-function addNote() {
-  var book = {
-
-  }
-  asyncStorageService.post(NOTES_KEY, notes);
-}
-
-
-

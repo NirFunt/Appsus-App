@@ -4,7 +4,10 @@
 @import "./pages/about-page.css";
 @import "./cmps/footer.css";
 
-@import"./apps/note/cmps/note-img.css";
+
+/* NOTE */
+@import "./apps/note/cmps/note-img.css";
+@import "./apps/note/pages/note-app.css";
 
 
 .main-section {

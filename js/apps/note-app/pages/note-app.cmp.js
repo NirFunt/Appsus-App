@@ -15,15 +15,14 @@ export default {
 
     template: `
     <section class="note-app">
-    <h3> Note app </h3>
-    <section class="notes-container">
-   <component v-for="(note,index) in notes" :key="note.key"
+    <!-- <h3> Note app </h3> -->
+   <component v-for="(note,index) in notes" :key="note.id"
    :is="note.type"
    :info="note.info"
-   @onsomeemit="dosomethinghere($event,index)">
+   :noteid="note.id"
+  @toggleTodo="toggleTodo($event)" @removeTodo="removeTodo($event)">
     </component>
-    </section>
-    
+    <!-- @onsomeemit="dosomethinghere($event,index)" -->
 </section>
     `
     ,
@@ -40,7 +39,14 @@ export default {
 
     },
     methods: {
+        toggleTodo(todoId, index) {
 
+        },
+        removeTodo(noteIdAndTodoId) {
+            noteService.removeToDo(noteIdAndTodoId)
+            .then (()=>noteService.query()
+            .then(notes => this.notes = notes));
+        }
     },
 
 }
