@@ -3,13 +3,14 @@
 @import "./pages/home-page.css";
 @import "./pages/about-page.css";
 @import "./cmps/footer.css";
-/* email Imports */
+/* NOTE */
+
+@import "./apps/note/cmps/note-img.css";
+@import "./apps/note/pages/note-app.css";
+/* EMAIL  */
 
 @import "./parts/helpers.css";
 @import "./apps/email/email-style.css";
-/* note Imports */
-
-@import"./apps/note/cmps/note-img.css";
 .main-section {
     height: 100vh;
 }
