@@ -185,6 +185,7 @@ export default {
                         this.selectedEmptyNote = 'Image'
                     } else if (note.type === 'note-todos') {
                         this.selectedEmptyNote = 'Todos'
+                        this.emptyTodo = noteService.getEmptyTodo()
                     }
                     this.isEditModal = true;
                     this.isNewNoteModal = true;
