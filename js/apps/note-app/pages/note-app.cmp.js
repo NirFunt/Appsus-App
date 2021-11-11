@@ -48,49 +48,67 @@ export default {
         };
     },
     created() {
-        noteService.query()
-            .then(allNotes => {
-                this.pinnedNotes = allNotes.filter(note => note.isPinned);
-                this.unpinnedNotes = allNotes.filter(note => !note.isPinned);
-            });
+      this.query();
     },
     destroyed() {
 
     },
     methods: {
+        query () {
+            noteService.query()
+            .then(allNotes => {
+                this.pinnedNotes = allNotes.filter(note => note.isPinned);
+                this.unpinnedNotes = allNotes.filter(note => !note.isPinned);
+            });
+        },
         removeNote (noteid) {
-           console.log(noteid)
+        //    console.log(noteid)
            noteService.removeNote(noteid)
-           .then (()=>noteService.query()
-           .then(notes => this.notes = notes));
+           .then (()=>this.query())
           },
 
         toggleTodo(noteIdAndTodoId) {
             noteService.toogleDone(noteIdAndTodoId)
-            .then (()=>noteService.query()
-            .then(notes => this.notes = notes));
+            .then (()=>this.query())
         },
         removeTodo(noteIdAndTodoId) {
             noteService.removeToDo(noteIdAndTodoId)
-            .then (()=>noteService.query()
-            .then(notes => this.notes = notes));
+            .then (()=>this.query())
         },
         changeColor (noteIdColor) {
             noteService.changeNoteColor(noteIdColor.noteId,noteIdColor.color)
-            .then (()=>noteService.query()
-            .then(notes => this.notes = notes));
+            .then (()=>this.query())
         },
         pin(noteId) {
-            // console.log(noteId)
             noteService.changePinned(noteId)
-            .then (()=>noteService.query()
-            .then(notes => this.notes = notes));
+            .then (()=>this.query())
         }
     },
 
-    computed : {
-      
-    }
+  
+    // watch: {
+    //     pinnedNotes: {
+    //        handler(val){
+    //         console.log(val);
+    //        },
+    //        deep: true
+    //     }
+    //   }
+
+    // watch: {
+    //     pinnedNotes: {
+    //         handler() {
+    //             noteService.query()
+    //             .then(allNotes => {
+    //                 this.pinnedNotes = allNotes.filter(note => note.isPinned);
+    //                 this.unpinnedNotes = allNotes.filter(note => !note.isPinned);
+    //             });
+    //         },
+    //         deep: true,
+    //         immediate: true
+    //     }
+    // },
+
 
 
 }
