@@ -40,7 +40,7 @@ export default {
     </component>
     </section>
 
-    <section>
+    <section v-if="isNewNoteModal">
         <h1> Add New Note </h1>
             <select v-model="selectedEmptyNote" @change="emptyNoteTypeChosen" >
                 <option>Text</option>
@@ -48,7 +48,7 @@ export default {
                 <option>Video</option>
                 <option>Todos</option>
             </select>
-            <button> Add </button>
+            <button @click="addNote"> Add </button>
 
             <div v-if="selectedEmptyNote==='Text'" >
             <input type="text" v-model="emptyNote.info.title">
@@ -56,12 +56,24 @@ export default {
             </div>
 
             <div v-if="selectedEmptyNote==='Image'" >
-                {{emptyNote}}
             <input type="text" v-model="emptyNote.info.url" >
             <input type="text" v-model="emptyNote.info.title">
             </div>
+
+            <div v-if="selectedEmptyNote==='Video'" >
+            <input type="text" v-model="emptyNote.info.url" >
+            <input type="text" v-model="emptyNote.info.label">
+            </div>
+
+            <div v-if="selectedEmptyNote==='Todos'" >
+            <input type="text" v-model="emptyNote.info.label" >
+            <input type="text" v-model="emptyTodo.txt" >
+            <ul> <li v-for="todo in emptyNote.info.todos"> {{todo.txt}}
+            <button @click="removeTempTodo(todo.id)">x</button></li></ul>
+            <button @click="getEmptyTodo" > Add Todo </button>
+            </div>
     </section>
-  
+
 </section>
     `
     ,
@@ -72,6 +84,7 @@ export default {
             isNewNoteModal: false,
             selectedEmptyNote: '',
             emptyNote : null,
+            emptyTodo : '',
 
         };
     },
@@ -131,13 +144,26 @@ export default {
                 }
                 case 'Todos' : {
                     newNote = noteService.getEmptyTodosNote();
+                    this.emptyTodo = noteService.getEmptyTodo()
                     break;
                 }
             }
             this.emptyNote = newNote;
+        },
+        getEmptyTodo () {
+            this.emptyNote.info.todos.push(this.emptyTodo);
+            this.emptyTodo = noteService.getEmptyTodo();
+        },
+
+        addNote () {
+            this.isNewNoteModal = false;
+            if (this.emptyNote) noteService.addNote(this.emptyNote)
+            .then(() => this.query())
+        },
+        removeTempTodo (todoId) {
+            console.log(todoId)
+            this.emptyNote.info.todos = this.emptyNote.info.todos.filter(todo => todo.id !==todoId);
         }
-
-
     },
 
 

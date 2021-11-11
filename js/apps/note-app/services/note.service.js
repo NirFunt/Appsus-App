@@ -45,11 +45,8 @@ function editNote(note) {
   return asyncStorageService.put(NOTES_KEY, note)
 }
 
-function addNote() {
-  var note = {
-
-  }
-  asyncStorageService.post(NOTES_KEY, notes);
+function addNote(note) {
+  return asyncStorageService.post(NOTES_KEY, note);
 }
 
 function saveNote(note) {
@@ -133,7 +130,7 @@ function getEmptyVideoNote() {
     isPinned: false,
     info: {
       label: "Enter Video Label",
-      url: 'Enter Video Url'
+      url:'https://www.youtube.com/embed/'
       , color: 'bcg-white'
     }
   }
