@@ -11,7 +11,7 @@ export default {
 <ul> <li v-for="todo in info.todos" :key="todo.id" @click="toggleDone(todo.id)" :class="{done:!todo.doneAt, undone:todo.doneAt}">
      {{todo.txt}} <button @click.stop="removeListElement(todo.id)"> x </button>
 </li> </ul>
-<note-actions :info="info" :noteid="noteid" @removeNote="removeNote"/>
+<note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor"/>
 </section>
     `
     ,
@@ -39,7 +39,10 @@ export default {
         },
         removeListElement(todoId) {
             this.$emit('removeTodo', {noteId:this.noteid, todoId:todoId})
-        }
+        },
+        changeColor (color) {
+            this.$emit('changeColor', color)
+        },
     },
     computed: {
         showTodo() {

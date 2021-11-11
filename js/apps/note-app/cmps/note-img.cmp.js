@@ -9,7 +9,7 @@ export default {
 <section class="note-img">
    <h3> {{info.title}} </h3>
    <img :src="info.url">
-   <note-actions :info="info" :noteid="noteid" @removeNote="removeNote"/>
+   <note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor" />
 </section>
     `
     ,
@@ -28,6 +28,10 @@ export default {
         removeNote (noteid) {
           this.$emit('removeNote',noteid)
         },
+        changeColor (color) {
+            this.$emit('changeColor', color)
+        }
+
     },
  
 }

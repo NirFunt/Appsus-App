@@ -10,7 +10,7 @@ export default {
  
 <h3>{{info.label}} </h3>
 <iframe width="170" height="100":src="info.url"></iframe>
-<note-actions :info="info" :noteid="noteid" @removeNote="removeNote"/>
+<note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor"/>
 
 </section>
     `
@@ -30,6 +30,9 @@ export default {
         removeNote (noteid) {
             this.$emit('removeNote',noteid)
           },
+          changeColor (color) {
+            this.$emit('changeColor', color)
+        }
     },
  
 }

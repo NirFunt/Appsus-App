@@ -19,10 +19,42 @@
 }
 
 
-.note-actions {
+.actions {
     display: flex;
     justify-content: end;
     gap: 5px;
     font-size: 1.2rem;
     cursor: pointer;
 }
+
+.color-picker {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 5;
+    background-color: gray;
+}
+
+.circle {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+.bcg-red {
+   background-color: red;
+}
+.bcg-blue {
+    background-color: blue;
+ }
+ .bcg-green {
+    background-color: green;
+ }
+ .bcg-white {
+    background-color: white;
+ }
+ .bcg-black {
+    background-color: black;
+ }
+

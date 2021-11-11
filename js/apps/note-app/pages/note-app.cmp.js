@@ -16,11 +16,12 @@ export default {
     template: `
     <section class="note-app">
     <!-- <h3> Note app </h3> -->
-   <component v-for="(note,index) in notes" :key="note.id"
+   <component v-for="(note,index) in notes" :key="note.id" :class="note.info.color"
    :is="note.type"
    :info="note.info"
    :noteid="note.id"
-  @toggleTodo="toggleTodo($event)" @removeTodo="removeTodo($event)" @removeNote="removeNote" >
+  @toggleTodo="toggleTodo($event)" @removeTodo="removeTodo($event)" @removeNote="removeNote"
+    @changeColor="changeColor" >
     </component>
   
 </section>
@@ -29,6 +30,7 @@ export default {
     data() {
         return {
             notes: null,
+            color: '',
         };
     },
     created() {
@@ -55,7 +57,17 @@ export default {
             noteService.removeToDo(noteIdAndTodoId)
             .then (()=>noteService.query()
             .then(notes => this.notes = notes));
+        },
+        changeColor (noteIdColor) {
+            noteService.changeNoteColor(noteIdColor.noteId,noteIdColor.color)
+            .then (()=>noteService.query()
+            .then(notes => this.notes = notes));
         }
     },
+
+    computed : {
+      
+    }
+
 
 }

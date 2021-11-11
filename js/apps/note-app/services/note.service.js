@@ -9,7 +9,8 @@ export const noteService = {
   editNote,
   addNote,
   removeToDo,
-  toogleDone
+  toogleDone,
+  changeNoteColor
 }
 
 const NOTES_KEY = 'notes';
@@ -71,27 +72,34 @@ function toogleDone ({noteId, todoId}) {
   )
 }
 
+function changeNoteColor (noteId,color) {
+  return getNoteById(noteId)
+  .then (note => {
+    note.info.color = color;
+    saveNote(note);
+  }
+  )
+}
+
 function _createNotes() {
   notes = storageService.loadFromStorage(NOTES_KEY)
   if (!notes || !notes.length) {
     notes = [
       {
         id: utilService.makeId(), type: "note-txt", isPinned: true, info: {
-          txt: "Fullstack Me Baby!"
+          title:'this is title', txt: "Fullstack Me Baby!",color:'bcg-white'
         }
       },
       {
-        id: utilService.makeId(), type: "note-img", info: {
+        id: utilService.makeId(), type: "note-img", isPinned: false, info: {
           url: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg",
-           title: "Bobi and Me"
+           title: "Bobi and Me",color:'bcg-white'
         },
-        style: {
-          backgroundColor: "#00d"
-        }
       },
       {
-        id: utilService.makeId(), type: "note-todos", info: {
-          label: "Get my stuff together", todos: [
+        id: utilService.makeId(), type: "note-todos", isPinned: false, info: {
+          label: "Get my stuff together", color:'bcg-white',
+           todos: [
             { id:utilService.makeId(), txt: "Driving liscence", doneAt: null },
             { id:utilService.makeId(), txt: "aaaaa", doneAt: null },
             { id:utilService.makeId(), txt: "Coding power", doneAt: 187111111 },
@@ -99,8 +107,9 @@ function _createNotes() {
         }
       },
       {
-        id: utilService.makeId(), type: "note-video", info: {
+        id: utilService.makeId(), type: "note-video", isPinned: true, info: {
           label: "This Video",  url:'https://www.youtube.com/embed/tgbNymZ7vqY'
+          ,color:'bcg-white'
         }
       }
     ];
