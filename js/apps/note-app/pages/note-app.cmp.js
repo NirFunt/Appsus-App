@@ -16,9 +16,10 @@ export default {
     template: `
 
     <section class="note-app">
+    <button @click="showNewNoteModal"> +</button>
 
-    <h2> Pinned </h2>
-    <section class="pinned-notes">
+    <h2 v-if="!isNewNoteModal"> Pinned </h2>
+    <section class="pinned-notes" v-if="!isNewNoteModal">
    <component v-for="(note,index) in pinnedNotes" :key="note.id" :class="note.info.color"
    :is="note.type"
    :info="note.info"
@@ -28,8 +29,8 @@ export default {
     </component>
     </section>
 
-    <h2> Not Pinned </h2>
-        <section class="unpinned-notes">
+    <h2 v-if="!isNewNoteModal"> Not Pinned </h2>
+        <section class="unpinned-notes" v-if="!isNewNoteModal">
    <component v-for="(note,index) in unpinnedNotes" :key="note.id" :class="note.info.color"
    :is="note.type"
    :info="note.info"
@@ -37,6 +38,28 @@ export default {
    @removeTodo="removeTodo($event)" @removeNote="removeNote"
     @changeColor="changeColor"  @pinned="pin" @toggleTodo="toggleTodo" >
     </component>
+    </section>
+
+    <section>
+        <h1> Add New Note </h1>
+            <select v-model="selectedEmptyNote" @change="emptyNoteTypeChosen" >
+                <option>Text</option>
+                <option>Image</option>
+                <option>Video</option>
+                <option>Todos</option>
+            </select>
+            <button> Add </button>
+
+            <div v-if="selectedEmptyNote==='Text'" >
+            <input type="text" v-model="emptyNote.info.title">
+            <input type="text" v-model="emptyNote.info.txt">
+            </div>
+
+            <div v-if="selectedEmptyNote==='Image'" >
+                {{emptyNote}}
+            <input type="text" v-model="emptyNote.info.url" >
+            <input type="text" v-model="emptyNote.info.title">
+            </div>
     </section>
   
 </section>
@@ -46,7 +69,10 @@ export default {
         return {
             pinnedNotes: [],
             unpinnedNotes: [],
-            color: '',
+            isNewNoteModal: false,
+            selectedEmptyNote: '',
+            emptyNote : null,
+
         };
     },
     created() {
@@ -81,12 +107,39 @@ export default {
                 .then(() => this.query())
         },
         toggleTodo({ todo, noteid }) {
-            console.log(todo);
-            console.log(noteid)
             noteService.toogleDone(noteid, todo.id)
                 .then(() => this.query())
+        },
+
+        showNewNoteModal() {
+            this.isNewNoteModal = !this.isNewNoteModal;
+        },
+        emptyNoteTypeChosen() {
+            let newNote = null;
+            switch (this.selectedEmptyNote) {
+                case 'Text' : {
+                    newNote = noteService.getEmptyTxtNote();
+                    break;
+                }
+                case 'Image' : {
+                    newNote = noteService.getEmptyImgNote();
+                    break;
+                }
+                case 'Video' : {
+                    newNote = noteService.getEmptyVideoNote();
+                    break;
+                }
+                case 'Todos' : {
+                    newNote = noteService.getEmptyTodosNote();
+                    break;
+                }
+            }
+            this.emptyNote = newNote;
         }
+
+
     },
+
 
 
     // watch: {
