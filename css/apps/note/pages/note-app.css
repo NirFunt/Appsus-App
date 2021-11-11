@@ -4,16 +4,22 @@
     align-items: center;
     gap: 15px;
     flex-wrap: wrap;
+    
 }
 
 .note-app section {
-  border: gold 2px solid;
+  /* border: gold 2px solid; */
 }
 
 .pinned-notes {
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
+    /* grid-template-columns: repeat(auto-fill, minmax(100px, 200px)); */
+    /* grid-template-rows: repeat(auto-fill, minmax(100px, 200px)); */
+    /* grid-auto-flow: row dense; */
+    /* grid-auto-flow: row dense; */
+
 }
 
 .unpinned-notes {
