@@ -3,11 +3,12 @@ import emailPreview from "./email-preview.cmp.js"
 export default {
     props: ['emails'],
     template: `
-        <section class="email-list flex flex-column" v-if=!isReadModal>
+        <section class="email-list flex flex-column" v-if=!isReadModal :filter="passDown">
             <!-- <search-bar/> -->
         <ul>
-            <li v-for="email in emails" :key="email.id" class="email-preview-container flex flex-column" >
-                <email-preview :email="email" @click.native="log"  @openModal="openModal" />
+            <li v-for="email in emails" :key="email.id" class="email-preview-container flex flex-column" :class={read:email.isRead}>
+                <email-preview :email="email" @click.native="openModal(email)"  @openModal="openModal" />
+              
                 <!-- <div class="actions">
                     <button @click="remove(car.id)" >X</button>
                     <router-link :to="'/car/'+car.id" >Details</router-link>
@@ -16,13 +17,17 @@ export default {
             </li>
         </ul>
         </section>
-        <div class="email-modal" v-else>
+        <div class="main-screen" v-else @click.self="isReadModal=false">
+        <div class="email-modal">
             <section class="modal-header flex space-between">
-                <p>{{clickedMail.from}}</p>
+                <p>{{clickedMail.subject}}</p>
                 <button @click="isReadModal=false">X</button>
             </section>
+            <div class="from">
+                <p>From:{{clickedMail.from}}</p>
+            </div>
             <p>{{clickedMail.body}}</p>
-
+        </div>
         </div>
     `
     ,
@@ -41,11 +46,16 @@ export default {
     methods: {
         log() {
             console.log('Logging.....');
+            this.isReadModal = true;
+
         },
-        openModal(isRead, email) {
-            console.log(isRead);
-            this.isReadModal = isRead
-            this.clickedMail = email
+        openModal(email) {
+            this.isReadModal = true;
+            this.clickedMail = email;
+
+        },
+        passDown(emailId) {
+            console.log(emailId);
         }
 
     },

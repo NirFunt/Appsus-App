@@ -1,14 +1,52 @@
+/* FONTS */
+
+@font-face {
+    font-family: "font awesome";
+    src: url(/fonts/fa/fa-brands-400.ttf);
+}
+
 /* MAIN APP */
 
 .email-app {
     border: 1px solid black;
     margin: 0 auto;
     width: 90%;
+    /* height: 90vh; */
 }
 
 /* EMAIL-PREVIEW */
 
 .email-preview {}
+
+.actions {
+    font-family: fa;
+}
+
+/* .star::before {
+    content: "\f005";
+    font-family: "font awesome";
+} */
+
+.star {
+    margin-right: 5px;
+}
+
+.delete-btn {
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 1.3rem;
+    color: rgb(51, 48, 48);
+}
+
+.delete-btn:hover {
+    font-size: 1.4rem;
+    color: rgb(177, 19, 19);
+}
+
+.fa-trash {}
+
+.read-btn::before {}
 
 /* EMAIL LIST */
 
@@ -32,12 +70,24 @@
     cursor: pointer;
 }
 
+.email-list li:hover {
+    /* box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.85); */
+    /* background-color: rgba(235, 230, 230, 0.815); */
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.85);
+}
+
+.read {
+    background-color: #f5f7f7;
+}
+
 /* preview-modal */
 
 .email-modal {
+    /* position: absolute; */
+    /* left: 200px; */
     margin: 0 auto;
-    width: 90%;
-    height: 500px;
+    width: 60%;
+    height: 300px;
     background-color: beige;
     z-index: 10;
     border-radius: 5px;
@@ -47,6 +97,25 @@
     color: rgb(244, 248, 240);
     padding: 10px;
     background-color: rgb(32, 27, 27);
+}
+
+.from {
+    background-color: rgba(223, 215, 215, 0.856);
+}
+
+/* SCREEN */
+
+.main-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.596);
+    cursor: pointer;
+    pointer-events: auto;
+    opacity: 1;
+    transition: opacity .6s;
 }
 
 /* FILTER-NAV */

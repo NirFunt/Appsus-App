@@ -6,23 +6,22 @@ export default {
     template: `    
 <section class="email-app flex space-between">
     <email-filter-nav/>
-    <email-list :emails="emailsForPreview"/>
+    <email-list :emails="emailsForPreview" @filter="filterSpecific" />
 </section>
     `
     ,
     data() {
         return {
             emails: null,
-            filterBy: null
+            filterBy: this.criteria,
+            criteria: 'inbox'
+        }
 
-        };
+
     },
     created() {
-        emailService.query()
-            .then(emails => {
-                this.emails = emails
-                console.log(emails);
-            })
+        this.loadEmails();
+
 
     },
     destroyed() {
@@ -31,11 +30,26 @@ export default {
     methods: {
         setFilter(filterBy) {
             this.filterBy = filterBy
+        },
+        loadEmails() {
+            emailService.query(this.criteria)
+                .then(emails => {
+                    console.log(emails);
+                    this.emails = emails
+                })
+        },
+        filterSpecific(emailId) {
+            console.log('hello filter', emailId);
+            this.emails = this.emails.filter(email => email.id !== emailId);
         }
     },
     computed: {
         emailsForPreview() {
             if (!this.filterBy) return this.emails
+            return this.emails.filter(email => email.status = this.filterBy)
+
+
+
         }
     }
     ,
