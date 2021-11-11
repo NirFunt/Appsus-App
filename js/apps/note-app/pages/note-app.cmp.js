@@ -19,36 +19,38 @@ export default {
     <button @click="showNewNoteModal"> +</button>
 
     <h2 v-if="!isNewNoteModal"> Pinned </h2>
-    <section class="pinned-notes" v-if="!isNewNoteModal">
+    <section class="pinned-notes" v-if="!isNewNoteModal && !isEditModal" >
    <component v-for="(note,index) in pinnedNotes" :key="note.id" :class="note.info.color"
    :is="note.type"
    :info="note.info"
    :noteid="note.id"
  @removeTodo="removeTodo($event)" @removeNote="removeNote"
-    @changeColor="changeColor" @pinned="pin" @toggleTodo="toggleTodo">
+    @changeColor="changeColor" @pinned="pin" @toggleTodo="toggleTodo" @edit="editNote">
     </component>
     </section>
 
     <h2 v-if="!isNewNoteModal"> Not Pinned </h2>
-        <section class="unpinned-notes" v-if="!isNewNoteModal">
+        <section class="unpinned-notes" v-if="!isNewNoteModal && !isEditModal">
    <component v-for="(note,index) in unpinnedNotes" :key="note.id" :class="note.info.color"
    :is="note.type"
    :info="note.info"
    :noteid="note.id"
    @removeTodo="removeTodo($event)" @removeNote="removeNote"
-    @changeColor="changeColor"  @pinned="pin" @toggleTodo="toggleTodo" >
+    @changeColor="changeColor"  @pinned="pin" @toggleTodo="toggleTodo" @edit="editNote" >
     </component>
     </section>
 
     <section v-if="isNewNoteModal">
-        <h1> Add New Note </h1>
-            <select v-model="selectedEmptyNote" @change="emptyNoteTypeChosen" >
+        <h1 v-if=!isEditModal> Add New Note </h1>
+            <select v-model="selectedEmptyNote" @change="emptyNoteTypeChosen" v-if="!isEditModal" >
                 <option>Text</option>
                 <option>Image</option>
                 <option>Video</option>
                 <option>Todos</option>
             </select>
-            <button @click="addNote"> Add </button>
+
+            <button @click="addNote" v-if="!isEditModal"> Add </button>
+            <button @click="updateNote" v-if="isEditModal"> Update </button>
 
             <div v-if="selectedEmptyNote==='Text'" >
             <input type="text" v-model="emptyNote.info.title">
@@ -83,13 +85,19 @@ export default {
             unpinnedNotes: [],
             isNewNoteModal: false,
             selectedEmptyNote: '',
-            emptyNote : null,
-            emptyTodo : '',
+            emptyNote: null,
+            emptyTodo: '',
+            isEditModal:false,
 
         };
     },
     created() {
         this.query();
+        // noteService.getNoteById('0k0YP')
+        // .then (note => {
+        //     this.emptyNote = note;
+        //     this.selectedEmptyNote = 'Todos'
+        // } )
     },
     destroyed() {
 
@@ -130,19 +138,19 @@ export default {
         emptyNoteTypeChosen() {
             let newNote = null;
             switch (this.selectedEmptyNote) {
-                case 'Text' : {
+                case 'Text': {
                     newNote = noteService.getEmptyTxtNote();
                     break;
                 }
-                case 'Image' : {
+                case 'Image': {
                     newNote = noteService.getEmptyImgNote();
                     break;
                 }
-                case 'Video' : {
+                case 'Video': {
                     newNote = noteService.getEmptyVideoNote();
                     break;
                 }
-                case 'Todos' : {
+                case 'Todos': {
                     newNote = noteService.getEmptyTodosNote();
                     this.emptyTodo = noteService.getEmptyTodo()
                     break;
@@ -150,19 +158,43 @@ export default {
             }
             this.emptyNote = newNote;
         },
-        getEmptyTodo () {
+        getEmptyTodo() {
             this.emptyNote.info.todos.push(this.emptyTodo);
             this.emptyTodo = noteService.getEmptyTodo();
         },
 
-        addNote () {
+        addNote() {
             this.isNewNoteModal = false;
             if (this.emptyNote) noteService.addNote(this.emptyNote)
-            .then(() => this.query())
+                .then(() => this.query())
         },
-        removeTempTodo (todoId) {
+        removeTempTodo(todoId) {
             console.log(todoId)
-            this.emptyNote.info.todos = this.emptyNote.info.todos.filter(todo => todo.id !==todoId);
+            this.emptyNote.info.todos = this.emptyNote.info.todos.filter(todo => todo.id !== todoId);
+        },
+        editNote(noteId) {
+            const note = noteService.getNoteById(noteId)
+                .then(note => {
+                    console.log(note)
+                    this.emptyNote = note;
+                    if (note.type === 'note-txt') {
+                        this.selectedEmptyNote = 'Text'
+                    } else if (note.type === 'note-video') {
+                        this.selectedEmptyNote = 'Video'
+                    } else if (note.type === 'note-img') {
+                        this.selectedEmptyNote = 'Image'
+                    } else if (note.type === 'note-todos') {
+                        this.selectedEmptyNote = 'Todos'
+                    }
+                    this.isEditModal = true;
+                    this.isNewNoteModal = true;
+                })
+        },
+        updateNote () {
+            this.isEditModal = false;
+            this.isNewNoteModal = false;
+            noteService.editNote (this.emptyNote)
+            .then(() => this.query())
         }
     },
 
