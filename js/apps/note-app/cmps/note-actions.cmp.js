@@ -35,7 +35,7 @@ export default {
     },
     methods: {
         pin() {
-
+            this.$emit('pinned',this.noteid)
         },
         changeColor() {
             this.isColorPicker = !this.isColorPicker;

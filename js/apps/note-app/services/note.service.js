@@ -10,7 +10,8 @@ export const noteService = {
   addNote,
   removeToDo,
   toogleDone,
-  changeNoteColor
+  changeNoteColor,
+  changePinned
 }
 
 const NOTES_KEY = 'notes';
@@ -76,6 +77,16 @@ function changeNoteColor (noteId,color) {
   return getNoteById(noteId)
   .then (note => {
     note.info.color = color;
+    saveNote(note);
+  }
+  )
+}
+
+function changePinned(noteId) {
+  // console.log(noteId)
+  return getNoteById(noteId)
+  .then (note => {
+    note.isPinned = !note.isPinned;
     saveNote(note);
   }
   )

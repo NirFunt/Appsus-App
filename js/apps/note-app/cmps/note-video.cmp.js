@@ -10,7 +10,8 @@ export default {
  
 <h3>{{info.label}} </h3>
 <iframe width="170" height="100":src="info.url"></iframe>
-<note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor"/>
+<note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor"
+@pinned="pin"/>
 
 </section>
     `
@@ -32,7 +33,10 @@ export default {
           },
           changeColor (color) {
             this.$emit('changeColor', color)
-        }
+        },
+        pin (noteId) {
+            this.$emit('pinned', noteId)
+        },
     },
  
 }

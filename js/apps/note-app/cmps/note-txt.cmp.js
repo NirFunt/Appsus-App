@@ -9,7 +9,8 @@ export default {
 <section class="note-txt">
 <h4> {{info.title}} </h4>
 <p> {{info.txt}} </p>
-<note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor"/>
+<note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor"
+@pinned="pin"/>
 
 </section>
     `
@@ -31,7 +32,10 @@ export default {
           },
           changeColor (color) {
             this.$emit('changeColor', color)
-        }
+        },
+        pin (noteId) {
+            this.$emit('pinned', noteId)
+        },
     },
  
 }

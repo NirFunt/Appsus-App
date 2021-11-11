@@ -1,13 +1,25 @@
 .note-app {
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
     align-items: center;
-    /* gap: 30px; */
+    gap: 15px;
     flex-wrap: wrap;
 }
 
 .note-app section {
   border: gold 2px solid;
+}
+
+.pinned-notes {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.unpinned-notes {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .done {

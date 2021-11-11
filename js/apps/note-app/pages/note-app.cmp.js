@@ -14,28 +14,45 @@ export default {
     },
 
     template: `
+
     <section class="note-app">
-    <!-- <h3> Note app </h3> -->
-   <component v-for="(note,index) in notes" :key="note.id" :class="note.info.color"
+
+    <section class="pinned-notes">
+   <component v-for="(note,index) in pinnedNotes" :key="note.id" :class="note.info.color"
    :is="note.type"
    :info="note.info"
    :noteid="note.id"
   @toggleTodo="toggleTodo($event)" @removeTodo="removeTodo($event)" @removeNote="removeNote"
-    @changeColor="changeColor" >
+    @changeColor="changeColor" @pinned="pin">
     </component>
+    </section>
+    
+        <section class="unpinned-notes">
+   <component v-for="(note,index) in unpinnedNotes" :key="note.id" :class="note.info.color"
+   :is="note.type"
+   :info="note.info"
+   :noteid="note.id"
+  @toggleTodo="toggleTodo($event)" @removeTodo="removeTodo($event)" @removeNote="removeNote"
+    @changeColor="changeColor"  @pinned="pin" >
+    </component>
+    </section>
   
 </section>
     `
     ,
     data() {
         return {
-            notes: null,
+            pinnedNotes : [],
+            unpinnedNotes: [],
             color: '',
         };
     },
     created() {
         noteService.query()
-            .then(notes => this.notes = notes);
+            .then(allNotes => {
+                this.pinnedNotes = allNotes.filter(note => note.isPinned);
+                this.unpinnedNotes = allNotes.filter(note => !note.isPinned);
+            });
     },
     destroyed() {
 
@@ -60,6 +77,12 @@ export default {
         },
         changeColor (noteIdColor) {
             noteService.changeNoteColor(noteIdColor.noteId,noteIdColor.color)
+            .then (()=>noteService.query()
+            .then(notes => this.notes = notes));
+        },
+        pin(noteId) {
+            // console.log(noteId)
+            noteService.changePinned(noteId)
             .then (()=>noteService.query()
             .then(notes => this.notes = notes));
         }
