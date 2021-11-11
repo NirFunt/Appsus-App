@@ -11,7 +11,8 @@ export const noteService = {
   removeToDo,
   toogleDone,
   changeNoteColor,
-  changePinned
+  changePinned,
+  
 }
 
 const NOTES_KEY = 'notes';
@@ -61,13 +62,13 @@ function removeToDo ({noteId, todoId}) {
   )
 }
 
-function toogleDone ({noteId, todoId}) {
+function toogleDone (noteId, todoId) {
   return getNoteById(noteId)
   .then (note => {
     const index = note.info.todos.findIndex(todo => todo.id === todoId);
-    console.log(note.info.todos[index].dontAt)
-    if(note.info.todos[index].dontAt) note.info.todos[index].dontAt = null;
-    else note.info.todos[index].dontAt = Date.now();
+    console.log(note.info.todos[index].doneAt)
+    if(note.info.todos[index].doneAt) note.info.todos[index].doneAt = null;
+    else note.info.todos[index].doneAt = Date.now();
     saveNote(note);
   }
   )
@@ -91,6 +92,7 @@ function changePinned(noteId) {
   }
   )
 }
+
 
 function _createNotes() {
   notes = storageService.loadFromStorage(NOTES_KEY)
