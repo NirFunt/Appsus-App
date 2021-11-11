@@ -11,11 +11,13 @@ export const emailService = {
     getById,
     save,
     remove,
+    loggedUserQuery
     // getEmptyCar,
     // getNextCarId
 };
 
 const EMAIL_KEY = 'emails';
+// const USER_KEY = 'user';
 
 const loggedinUser = {
     email: 'sayan123@appsus.com',
@@ -23,6 +25,7 @@ const loggedinUser = {
 };
 
 _createEmails()
+
 
 
 function _createEmails() {
@@ -58,10 +61,18 @@ function _createEmail(subject, body, from, status) {
 
 }
 
-function query(filterBy = {}) {
-    return asyncStorageService.query(EMAIL_KEY);
-
+function query(filterBy = null) {
+    return asyncStorageService.query(EMAIL_KEY).then((mails) => {
+        if (!filterBy) return mails
+        return mails.filter(email => {
+            return email.status === filterBy
+        })
+    })
 }
+function loggedUserQuery() {
+    return loggedinUser
+}
+
 function getById(emailId) {
     return asyncStorageService.get(EMAIL_KEY, emailId);
 }

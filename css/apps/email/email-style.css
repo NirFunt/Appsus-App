@@ -93,6 +93,16 @@
     border-radius: 5px;
 }
 
+.draft-modal {
+    margin: 0 auto;
+    width: 30%;
+    height: 150px;
+    background-color: beige;
+    z-index: 20;
+    border-radius: 5px;
+    font-size: 2rem;
+}
+
 .modal-header {
     color: rgb(244, 248, 240);
     padding: 10px;

@@ -17,7 +17,7 @@ export default {
             </section>
             <section class="actions">
                  <button class="read-btn" @click.stop="markAsRead">Read/unread</button>
-                 <button class="delete-btn" @click.stop="deleteEmail">
+                 <button class="delete-btn" @click.stop="moveToTrash">
                  <i class="fas fa-trash"></i>
                  </button>
             </section>
@@ -49,17 +49,20 @@ export default {
             //         this.parent.$emit('render')
             //     })
         },
-        deleteEmail() {
-            emailService.remove(this.email)
-                .then(() => {
-                    console.log('deleted email//ADD EVENT BUS MSG');
-                })
-            this.$parent.$emit('filter', this.email.id);
-
+        moveToTrash() {
+            console.log(this.email);
+            this.$parent.$emit('trash', this.email);
         },
         markStarred() {
             console.log('starred');
         },
+        // deleteEmail() {
+        //     emailService.remove(this.email)
+        //         .then(() => {
+        //             console.log('deleted email//ADD EVENT BUS MSG');
+        //         })
+        //     this.$parent.$emit('filter', this.email.id);
+        // }
 
     }
 }

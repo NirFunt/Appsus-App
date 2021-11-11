@@ -8,12 +8,6 @@ export default {
         <ul>
             <li v-for="email in emails" :key="email.id" class="email-preview-container flex flex-column" :class={read:email.isRead}>
                 <email-preview :email="email" @click.native="openModal(email)"  @openModal="openModal" />
-              
-                <!-- <div class="actions">
-                    <button @click="remove(car.id)" >X</button>
-                    <router-link :to="'/car/'+car.id" >Details</router-link>
-                    <router-link :to="'/car/'+car.id + '/edit'" >Edit</router-link>
-                </div> -->
             </li>
         </ul>
         </section>
