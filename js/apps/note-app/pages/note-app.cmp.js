@@ -17,6 +17,7 @@ export default {
 
     <section class="note-app">
 
+    <h2> Pinned </h2>
     <section class="pinned-notes">
    <component v-for="(note,index) in pinnedNotes" :key="note.id" :class="note.info.color"
    :is="note.type"
@@ -26,7 +27,8 @@ export default {
     @changeColor="changeColor" @pinned="pin" @toggleTodo="toggleTodo">
     </component>
     </section>
-    
+
+    <h2> Not Pinned </h2>
         <section class="unpinned-notes">
    <component v-for="(note,index) in unpinnedNotes" :key="note.id" :class="note.info.color"
    :is="note.type"
