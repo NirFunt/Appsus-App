@@ -10,13 +10,19 @@ export default {
    <h3> {{info.title}} </h3>
    <img :src="info.url">
    <note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor"
-   @pinned="pin" />
+   @pinned="pin" @edit="editNote" />
+
+             <!-- <div >
+            <input type="text" v-model="updatedUrl" >
+            <input type="text" v-model="updatedTitle">
+            </div> -->
 </section>
     `
     ,
     data() {
         return {
-        
+            // updatedUrl: 'New url',
+            // updatedTitle : 'New title'
         };
     },
     created() {
@@ -34,6 +40,9 @@ export default {
         },
         pin (noteId) {
             this.$emit('pinned', noteId)
+        },
+        editNote() {
+            this.$emit('edit', this.noteid)
         },
 
     },

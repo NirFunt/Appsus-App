@@ -15,12 +15,20 @@ export default {
 </li> </ul>
 
 <note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor"
-@pinned="pin"/>
+@pinned="pin" @edit="editNote"/>
+
+
+<!-- <div>
+            <input type="text" v-model="updatedLabel" >
+            <input type="text" v-model="updatedTxt" >
+            </div> -->
 </section>
     `
     ,
     data() {
         return {
+            // updatedLabel : 'New label',
+            // updatedTxt : 'New Txt',
 
         };
     },
@@ -52,6 +60,9 @@ export default {
         },
         pin(noteId) {
             this.$emit('pinned', noteId)
+        },
+        editNote() {
+            this.$emit('edit', this.noteid)
         },
     },
     computed: {

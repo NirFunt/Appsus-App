@@ -16,7 +16,7 @@ export default {
 <div @click="pin">📌</div>
 <div @mouseover="changeColor" >🖌</div>
 <div @click="sendAsMail">📩</div>
-<div @click="addNote">📝</div>
+<div @click="editNote">📝</div>
 <div @click="trash">🗑</div>
 </section>
 </section>
@@ -43,8 +43,8 @@ export default {
         sendAsMail() {
 
         },
-        addNote() {
-
+        editNote() {
+            this.$emit('edit', this.noteid)
         },
         trash() {
             this.$emit('removeNote',this.noteid)

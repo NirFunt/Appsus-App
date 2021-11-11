@@ -11,14 +11,21 @@ export default {
 <h3>{{info.label}} </h3>
 <iframe width="170" height="100":src="info.url"></iframe>
 <note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor"
+@edit="editNote"
 @pinned="pin"/>
+
+            <!-- <div  >
+            <input type="text" v-model="updatedUrl" >
+            <input type="text" v-model="updatedLabel">
+            </div> -->
 
 </section>
     `
     ,
     data() {
         return {
-        
+            // updatedUrl : 'New url',
+            // updatedLabel : 'New label'
         };
     },
     created() {
@@ -36,6 +43,9 @@ export default {
         },
         pin (noteId) {
             this.$emit('pinned', noteId)
+        },
+        editNote() {
+            this.$emit('edit', this.noteid)
         },
     },
  
