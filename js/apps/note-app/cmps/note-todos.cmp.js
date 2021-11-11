@@ -1,5 +1,9 @@
-export default {
+import noteActions from './note-actions.cmp.js';
 
+export default {
+    components: {
+       noteActions,
+    },
     props: ['info','noteid'],
     template: `
 <section class="note-todos">
@@ -7,7 +11,7 @@ export default {
 <ul> <li v-for="todo in info.todos" :key="todo.id" @click="toggleDone(todo.id)" :class="{done:!todo.doneAt, undone:todo.doneAt}">
      {{todo.txt}} <button @click.stop="removeListElement(todo.id)"> x </button>
 </li> </ul>
-
+<note-actions :info="info" :noteid="noteid" @removeNote="removeNote"/>
 </section>
     `
     ,
@@ -23,6 +27,9 @@ export default {
 
     },
     methods: {
+        removeNote (noteid) {
+            this.$emit('removeNote',noteid)
+          },
         toggleDone(todoId) {
             // console.log(this.info.todos)
             // let todo = this.info.todos.find(todo => todo.id === todoId);

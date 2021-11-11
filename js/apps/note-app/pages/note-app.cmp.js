@@ -20,9 +20,9 @@ export default {
    :is="note.type"
    :info="note.info"
    :noteid="note.id"
-  @toggleTodo="toggleTodo($event)" @removeTodo="removeTodo($event)">
+  @toggleTodo="toggleTodo($event)" @removeTodo="removeTodo($event)" @removeNote="removeNote" >
     </component>
-    <!-- @onsomeemit="dosomethinghere($event,index)" -->
+  
 </section>
     `
     ,
@@ -39,6 +39,13 @@ export default {
 
     },
     methods: {
+        removeNote (noteid) {
+           console.log(noteid)
+           noteService.removeNote(noteid)
+           .then (()=>noteService.query()
+           .then(notes => this.notes = notes));
+          },
+
         toggleTodo(noteIdAndTodoId) {
             noteService.toogleDone(noteIdAndTodoId)
             .then (()=>noteService.query()
