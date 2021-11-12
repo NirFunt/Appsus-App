@@ -17,19 +17,12 @@ export default {
 <note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor"
 @pinned="pin" @edit="editNote"/>
 
-
-<!-- <div>
-            <input type="text" v-model="updatedLabel" >
-            <input type="text" v-model="updatedTxt" >
-            </div> -->
 </section>
     `
     ,
     data() {
         return {
-            // updatedLabel : 'New label',
-            // updatedTxt : 'New Txt',
-
+       
         };
     },
     created() {
@@ -45,13 +38,6 @@ export default {
         toggleTodo(todo) {
             this.$emit('toggleTodo', { todo: todo, noteid: this.noteid })
         },
-        toggleDone(todoId) {
-            // console.log(this.info.todos)
-            // let todo = this.info.todos.find(todo => todo.id === todoId);
-            // if (todo.doneAt = null) todo.doneAt = Date.now();
-            // else if(todo.doneAt) todo.doneAt = null;
-            this.$emit('toggleTodo', { noteId: this.noteid, todoId: todoId });
-        },
         removeListElement(todoId) {
             this.$emit('removeTodo', { noteId: this.noteid, todoId: todoId })
         },
@@ -66,8 +52,6 @@ export default {
         },
     },
     computed: {
-        showTodo() {
-
-        }
+    
     }
 }

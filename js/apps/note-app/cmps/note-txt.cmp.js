@@ -12,17 +12,12 @@ export default {
 <note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor"
 @pinned="pin" @edit="editNote"/>
 
-<!-- <div>
-<input type="text" v-model="updatedTitle">
-<input type="text" v-model="updatedTxt">
-</div> -->
 </section>
     `
     ,
     data() {
         return {
-            // updatedTitle : 'new title',
-            // updatedTxt : 'new text'
+      
         };
     },
     created() {

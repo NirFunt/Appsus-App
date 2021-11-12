@@ -14,18 +14,12 @@ export default {
 @edit="editNote"
 @pinned="pin"/>
 
-            <!-- <div  >
-            <input type="text" v-model="updatedUrl" >
-            <input type="text" v-model="updatedLabel">
-            </div> -->
-
 </section>
     `
     ,
     data() {
         return {
-            // updatedUrl : 'New url',
-            // updatedLabel : 'New label'
+          
         };
     },
     created() {

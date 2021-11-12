@@ -93,11 +93,6 @@ export default {
     },
     created() {
         this.query();
-        // noteService.getNoteById('0k0YP')
-        // .then (note => {
-        //     this.emptyNote = note;
-        //     this.selectedEmptyNote = 'Todos'
-        // } )
     },
     destroyed() {
 
@@ -111,7 +106,6 @@ export default {
                 });
         },
         removeNote(noteid) {
-            //    console.log(noteid)
             noteService.removeNote(noteid)
                 .then(() => this.query())
         },
@@ -198,32 +192,5 @@ export default {
             .then(() => this.query())
         }
     },
-
-
-
-    // watch: {
-    //     pinnedNotes: {
-    //        handler(val){
-    //         console.log(val);
-    //        },
-    //        deep: true
-    //     }
-    //   }
-
-    // watch: {
-    //     pinnedNotes: {
-    //         handler() {
-    //             noteService.query()
-    //             .then(allNotes => {
-    //                 this.pinnedNotes = allNotes.filter(note => note.isPinned);
-    //                 this.unpinnedNotes = allNotes.filter(note => !note.isPinned);
-    //             });
-    //         },
-    //         deep: true,
-    //         immediate: true
-    //     }
-    // },
-
-
 
 }
