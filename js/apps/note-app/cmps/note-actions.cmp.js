@@ -3,18 +3,17 @@ export default {
     props: ['info', 'noteid'],
     template: `
 <section class="note-actions">
-
-<section class="color-picker" v-if="isColorPicker" @mouseleave="changeColor">
-<div class="bcg-red circle" @click="sendColor('bcg-red')"> </div>
+<section :class="showHide">
+<div class="bcg-purple circle" @click="sendColor('bcg-purple')"> </div>
 <div class="bcg-blue circle" @click="sendColor('bcg-blue')"> </div>
+<div class="bcg-turquoise circle" @click="sendColor('bcg-turquoise')"> </div>
+<div class="bcg-light-green circle" @click="sendColor('bcg-light-green')"> </div>
 <div class="bcg-green circle" @click="sendColor('bcg-green')"> </div>
-<div class="bcg-white circle" @click="sendColor('bcg-white')"> </div>
-<div class="bcg-black circle" @click="sendColor('bcg-black')"> </div>
 </section>
 
 <section class="actions">
 <div @click="pin">📌</div>
-<div @mouseover="changeColor" >🖌</div>
+<div @click="changeColor" >🖌</div>
 <div @click="sendAsMail">📩</div>
 <div @click="editNote">📝</div>
 <div @click="trash">🗑</div>
@@ -53,5 +52,11 @@ export default {
             this.$emit('changeColor', {noteId: this.noteid, color: color})
         }
     },
+    computed : {
+        showHide () {
+            if (this.isColorPicker) return 'color-picker show';
+            if (!this.isColorPicker) return 'color-picker hide';
+        }
+    }
 
 }

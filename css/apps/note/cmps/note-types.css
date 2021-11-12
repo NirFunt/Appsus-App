@@ -1,16 +1,46 @@
 
 .note-video {
     border: gold 2px solid;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 10px;
 }
 
 .note-todos {
     border: gold 2px solid;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 10px;
+    
 }
 
 .note-txt {
     border: gold 2px solid;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* max-height: 100px; */
+    /* align-items: center; */
+    /* align-self: flex-start; */
+    text-align: center;
+    gap: 10px;
+    padding: 10px;
 }
 
 .note-img {
     border: gold 2px solid;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.note-img  img{
+    width: 80%;
+    margin: auto;
 }

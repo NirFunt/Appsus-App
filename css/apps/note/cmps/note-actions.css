@@ -1,0 +1,51 @@
+.actions {
+    display: flex;
+    justify-content: end;
+    /* align-items: flex-end; */
+    gap: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.color-picker {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 5;
+    background-color: none;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.hide {
+opacity: 0;
+}
+
+.show {
+opacity: 1;
+}
+
+.circle {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+.bcg-purple {
+   background-color: rgb(185, 131, 255);
+}
+.bcg-blue {
+    background-color: rgb(148, 179, 253)
+ }
+ .bcg-turquoise {
+    background-color: rgb(148, 218, 255)
+ }
+ .bcg-light-green {
+    background-color: rgb(153, 254, 255)
+ }
+ .bcg-green {
+    background-color: rgb(23, 215, 160);
+ }
+ /* https://colorhunt.co/palette/b983ff94b3fd94daff99feff */
+ /* https://colorhunt.co/palette/5441796166b332c1cd17d7a0 */

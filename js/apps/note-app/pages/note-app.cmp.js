@@ -19,7 +19,7 @@ export default {
     <button @click="showNewNoteModal"> +</button>
 
     <h2 v-if="!isNewNoteModal"> Pinned </h2>
-    <section class="pinned-notes" v-if="!isNewNoteModal && !isEditModal" >
+    <section class="pinned-notes"  >
    <component v-for="(note,index) in pinnedNotes" :key="note.id" :class="note.info.color"
    :is="note.type"
    :info="note.info"
@@ -29,8 +29,9 @@ export default {
     </component>
     </section>
 
+    <!-- v-if="!isNewNoteModal && !isEditModal -->
     <h2 v-if="!isNewNoteModal"> Not Pinned </h2>
-        <section class="unpinned-notes" v-if="!isNewNoteModal && !isEditModal">
+        <section class="unpinned-notes" >
    <component v-for="(note,index) in unpinnedNotes" :key="note.id" :class="note.info.color"
    :is="note.type"
    :info="note.info"
@@ -40,7 +41,7 @@ export default {
     </component>
     </section>
 
-    <section v-if="isNewNoteModal">
+    <section v-if="isNewNoteModal" class="addEditWindow">
         <h1 v-if=!isEditModal> Add New Note </h1>
             <select v-model="selectedEmptyNote" @change="emptyNoteTypeChosen" v-if="!isEditModal" >
                 <option>Text</option>

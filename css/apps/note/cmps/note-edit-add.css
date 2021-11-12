@@ -1,0 +1,21 @@
+
+.addEditWindow {
+    position: fixed;
+    top: 50%;
+    left: 30%;
+    background-color: lightgray;
+    width: 300px;
+    height: 200px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background-image: url('../../../../img/note-edit-add2.jpg');
+}
+
+.addEditWindow div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

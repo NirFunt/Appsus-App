@@ -1,5 +1,5 @@
 .note-app {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     align-items: center;
     gap: 15px;
@@ -12,20 +12,32 @@
 }
 
 .pinned-notes {
-    display: flex;
+    display: grid;
     gap: 15px;
-    flex-wrap: wrap;
-    /* grid-template-columns: repeat(auto-fill, minmax(100px, 200px)); */
+    /* flex-wrap: wrap; */
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    
+    /* align-self: start; */
+    /* justify-items: start; */
+    align-items: start;
+
+    grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
     /* grid-template-rows: repeat(auto-fill, minmax(100px, 200px)); */
     /* grid-auto-flow: row dense; */
-    /* grid-auto-flow: row dense; */
+    /* grid-auto-flow: column dense; */
+    /* grid-auto-flow: dense; */
 
 }
 
 .unpinned-notes {
-    display: flex;
+    /* display: flex;
     gap: 15px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
+
+    display: grid;
+    gap: 15px;
+    align-items: start;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
 }
 
 .done {
@@ -37,42 +49,5 @@
 }
 
 
-.actions {
-    display: flex;
-    justify-content: end;
-    gap: 5px;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
 
-.color-picker {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    z-index: 5;
-    background-color: gray;
-}
-
-.circle {
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-}
-.bcg-red {
-   background-color: red;
-}
-.bcg-blue {
-    background-color: blue;
- }
- .bcg-green {
-    background-color: green;
- }
- .bcg-white {
-    background-color: white;
- }
- .bcg-black {
-    background-color: black;
- }
 

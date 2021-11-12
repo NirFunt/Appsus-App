@@ -98,7 +98,7 @@ function getEmptyTxtNote() {
     info: {
       title: 'Enter Title',
       txt: "Enter Text",
-      color: 'bcg-white'
+      color: 'bcg-purple'
     }
   }
   return noteTxt;
@@ -112,7 +112,7 @@ function getEmptyImgNote() {
     info: {
       url: "Enter Image Url",
       title: "Enter Image Title",
-      color: 'bcg-white'
+      color: 'bcg-purple'
     }
   }
   return noteImg;
@@ -126,7 +126,7 @@ function getEmptyVideoNote() {
     info: {
       label: "Enter Video Label",
       url:'https://www.youtube.com/embed/'
-      , color: 'bcg-white'
+      , color: 'bcg-purple'
     }
   }
   return noteVideo;
@@ -139,7 +139,7 @@ function getEmptyTodosNote() {
     isPinned: false,
     info: {
       label: "Enter Label",
-      color: 'bcg-white',
+      color: 'bcg-purple',
       todos: []
     }
   }
@@ -161,18 +161,18 @@ function _createNotes() {
     notes = [
       {
         id: utilService.makeId(), type: "note-txt", isPinned: true, info: {
-          title: 'this is title', txt: "Fullstack Me Baby!", color: 'bcg-white'
+          title: 'this is title', txt: "Fullstack Me Baby!", color: 'bcg-purple'
         }
       },
       {
         id: utilService.makeId(), type: "note-img", isPinned: false, info: {
           url: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg",
-          title: "Bobi and Me", color: 'bcg-white'
+          title: "Bobi and Me", color: 'bcg-purple'
         },
       },
       {
         id: utilService.makeId(), type: "note-todos", isPinned: false, info: {
-          label: "Get my stuff together", color: 'bcg-white',
+          label: "Get my stuff together", color: 'bcg-purple',
           todos: [
             { id: utilService.makeId(), txt: "Driving liscence", doneAt: null },
             { id: utilService.makeId(), txt: "aaaaa", doneAt: null },
@@ -183,7 +183,7 @@ function _createNotes() {
       {
         id: utilService.makeId(), type: "note-video", isPinned: true, info: {
           label: "This Video", url: 'https://www.youtube.com/embed/tgbNymZ7vqY'
-          , color: 'bcg-white'
+          , color: 'bcg-purple'
         }
       }
     ];

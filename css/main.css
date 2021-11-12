@@ -6,9 +6,10 @@
 
 
 /* NOTE */
-@import "./apps/note/cmps/note-img.css";
 @import "./apps/note/pages/note-app.css";
 @import "./apps/note/cmps/note-types.css";
+@import "./apps/note/cmps/note-actions.css";
+@import "./apps/note/cmps/note-edit-add.css";
 
 
 /* EMAIL  */
