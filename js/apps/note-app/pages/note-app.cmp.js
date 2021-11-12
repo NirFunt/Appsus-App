@@ -29,7 +29,7 @@ export default {
     </component>
     </section>
 <hr>
-    <!-- v-if="!isNewNoteModal && !isEditModal -->
+   
     <h5> OTHERS </h5>
         <section class="unpinned-notes" >
    <component v-for="(note,index) in unpinnedNotes" :key="note.id" :class="note.info.color"

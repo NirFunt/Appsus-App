@@ -17,7 +17,6 @@ export const noteService = {
   getEmptyVideoNote,
   getEmptyTodosNote,
   getEmptyTodo
-
 }
 
 const NOTES_KEY = 'notes';
@@ -125,7 +124,7 @@ function getEmptyVideoNote() {
     isPinned: false,
     info: {
       label: "",
-      url:'https://www.youtube.com/embed/'
+      url: 'https://www.youtube.com/embed/'
       , color: 'bcg-purple'
     }
   }
@@ -155,39 +154,246 @@ function getEmptyTodo() {
   return todo;
 }
 
+
+
 function _createNotes() {
   notes = storageService.loadFromStorage(NOTES_KEY)
   if (!notes || !notes.length) {
     notes = [
       {
-        id: utilService.makeId(), type: "note-txt", isPinned: true, info: {
-          title: 'this is title', txt: "Fullstack Me Baby!", color: 'bcg-purple'
+        "id": "A94Vj",
+        "type": "note-txt",
+        "isPinned": true,
+        "info": {
+          "title": "Important Note",
+          "txt": "Go To the Gym",
+          "color": "bcg-light-green"
         }
       },
       {
-        id: utilService.makeId(), type: "note-img", isPinned: false, info: {
-          url: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg",
-          title: "Bobi and Me", color: 'bcg-purple'
-        },
-      },
-      {
-        id: utilService.makeId(), type: "note-todos", isPinned: false, info: {
-          label: "Get my stuff together", color: 'bcg-purple',
-          todos: [
-            { id: utilService.makeId(), txt: "Driving liscence", doneAt: null },
-            { id: utilService.makeId(), txt: "aaaaa", doneAt: null },
-            { id: utilService.makeId(), txt: "Coding power", doneAt: 187111111 },
-            { id: utilService.makeId(), txt: "ccccc", doneAt: 187111111 }]
+        "id": "aQZ3x",
+        "type": "note-todos",
+        "isPinned": true,
+        "info": {
+          "label": "Animals List",
+          "color": "bcg-blue",
+          "todos": [
+            {
+              "id": "sKox0",
+              "txt": "Cat",
+              "doneAt": 1636715741046
+            },
+            {
+              "id": "PqnJ9",
+              "txt": "Dog",
+              "doneAt": 1636715745982
+            },
+            {
+              "id": "dut3m",
+              "txt": "Horse",
+              "doneAt": 1636715749854
+            }
+          ]
         }
       },
       {
-        id: utilService.makeId(), type: "note-video", isPinned: true, info: {
-          label: "This Video", url: 'https://www.youtube.com/embed/tgbNymZ7vqY'
-          , color: 'bcg-purple'
+        "id": "BWlUm",
+        "type": "note-img",
+        "isPinned": true,
+        "info": {
+          "url": "https://c4.wallpaperflare.com/wallpaper/415/195/652/spots-reflections-soft-light-wallpaper-preview.jpg",
+          "title": "Nice Image",
+          "color": "bcg-green"
+        }
+      },
+      {
+        "id": "uGpc4",
+        "type": "note-todos",
+        "isPinned": true,
+        "info": {
+          "label": "Shop List",
+          "color": "bcg-turquoise",
+          "todos": [
+            {
+              "id": "XgjhD",
+              "txt": "item 1",
+              "doneAt": 1636715838394
+            },
+            {
+              "id": "2HxgJ",
+              "txt": "item 2",
+              "doneAt": 1636715844376
+            },
+            {
+              "id": "FCR5v",
+              "txt": "item 3",
+              "doneAt": 1636715847192
+            },
+            {
+              "id": "yfSt0",
+              "txt": "item 4",
+              "doneAt": 1636715850183
+            },
+            {
+              "id": "XjGXJ",
+              "txt": "item 5",
+              "doneAt": 1636715853284
+            }
+          ]
+        }
+      },
+      {
+        "id": "bzxgN",
+        "type": "note-video",
+        "isPinned": true,
+        "info": {
+          "label": "Bohemian Rhapsody The Muppets",
+          "url": "https://www.youtube.com/embed/tgbNymZ7vqY",
+          "color": "bcg-light-green"
+        }
+      },
+      {
+        "id": "07sLm",
+        "type": "note-img",
+        "isPinned": true,
+        "info": {
+          "url": "https://www.nasa.gov/sites/default/files/styles/image_card_4x3_ratio/public/thumbnails/image/halloween_sun_2014_2k.jpg",
+          "title": "Image of the Sun",
+          "color": "bcg-purple"
+        }
+      },
+      {
+        "id": "WHBgM",
+        "type": "note-video",
+        "isPinned": true,
+        "info": {
+          "label": "Michael Kiwanuka - Cold Little Heart ",
+          "url": "https://www.youtube.com/embed/nOubjLM9Cbc",
+          "color": "bcg-purple"
+        }
+      },
+      {
+        "id": "SpBJt",
+        "type": "note-img",
+        "isPinned": false,
+        "info": {
+          "url": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg",
+          "title": "Great Sunset",
+          "color": "bcg-light-green"
+        }
+      },
+      {
+        "id": "AaMyv",
+        "type": "note-video",
+        "isPinned": false,
+        "info": {
+          "label": "Journey - Separate Ways",
+          "url": "https://www.youtubel.com/embed/LatorN4P9aA",
+          "color": "bcg-purple"
+        }
+      },
+      {
+        "id": "H8NwV",
+        "type": "note-todos",
+        "isPinned": false,
+        "info": {
+          "label": "Grocery List",
+          "color": "bcg-light-green",
+          "todos": [
+            {
+              "id": "813Rw",
+              "txt": "Milk",
+              "doneAt": 1636716022539
+            },
+            {
+              "id": "IM7cw",
+              "txt": "Sugar",
+              "doneAt": 1636716062400
+            },
+            {
+              "id": "LUUj9",
+              "txt": "Coffee",
+              "doneAt": 1636716065758
+            },
+            {
+              "id": "Ph2sP",
+              "txt": "Pasta",
+              "doneAt": 1636716071428
+            },
+            {
+              "id": "DmAaJ",
+              "txt": "Butter",
+              "doneAt": 1636716074448
+            },
+            {
+              "id": "B0dpa",
+              "txt": "Tomatoes ",
+              "doneAt": 1636716082496
+            }
+          ]
+        }
+      },
+      {
+        "id": "MgefQ",
+        "type": "note-txt",
+        "isPinned": false,
+        "info": {
+          "title": "Play Guitar",
+          "txt": "Play all loved songs and practice the beat",
+          "color": "bcg-turquoise"
+        }
+      },
+      {
+        "id": "8a8cD",
+        "type": "note-img",
+        "isPinned": false,
+        "info": {
+          "url": "https://c4.wallpaperflare.com/wallpaper/415/195/652/spots-reflections-soft-light-wallpaper-preview.jpg",
+          "title": "Water Image",
+          "color": "bcg-light-green"
+        }
+      },
+      {
+        "id": "C49Am",
+        "type": "note-video",
+        "isPinned": false,
+        "info": {
+          "label": "Funny Video",
+          "url": "https://www.youtube.com/embed/vjoKyj51o_I",
+          "color": "bcg-purple"
+        }
+      },
+      {
+        "id": "ie2ry",
+        "type": "note-img",
+        "isPinned": false,
+        "info": {
+          "url": "https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+          "title": "Fether",
+          "color": "bcg-blue"
+        }
+      },
+      {
+        "id": "JHzsK",
+        "type": "note-img",
+        "isPinned": false,
+        "info": {
+          "url": "https://media.istockphoto.com/photos/colored-powder-explosion-on-black-background-picture-id1057506940?k=20&m=1057506940&s=612x612&w=0&h=3j5EA6YFVg3q-laNqTGtLxfCKVR3_o6gcVZZseNaWGk=",
+          "title": "Colors",
+          "color": "bcg-green"
+        }
+      },
+      {
+        "id": "a9Xp0",
+        "type": "note-video",
+        "isPinned": false,
+        "info": {
+          "label": "Michael Kiwanuka - Love & Hate",
+          "url": "https://www.youtube.com/embed/aMZ4QL0orw0",
+          "color": "bcg-purple"
         }
       }
-    ];
-
+    ]
   }
   storageService.saveToStorage(NOTES_KEY, notes);
   return notes;
