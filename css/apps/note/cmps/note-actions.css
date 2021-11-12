@@ -4,7 +4,15 @@
     /* align-items: flex-end; */
     gap: 5px;
     font-size: 1.2rem;
-    cursor: pointer;
+   
+}
+
+.actions div {
+   cursor: pointer;
+}
+
+.actions div:hover {
+   transform: rotate(30deg);
 }
 
 .color-picker {

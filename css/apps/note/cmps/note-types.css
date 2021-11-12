@@ -1,6 +1,6 @@
 
 .note-video {
-    border: gold 2px solid;
+    border: lightgray 2px solid;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -9,17 +9,20 @@
 }
 
 .note-todos {
-    border: gold 2px solid;
+    border: lightgray 2px solid;
     display: flex;
     flex-direction: column;
     text-align: center;
     gap: 10px;
     padding: 10px;
-    
+}
+
+.note-todo-preview {
+    word-break: break-all;
 }
 
 .note-txt {
-    border: gold 2px solid;
+    border: lightgray 2px solid;
     display: flex;
     flex-direction: column;
     /* justify-content: space-between; */
@@ -29,10 +32,12 @@
     text-align: center;
     gap: 10px;
     padding: 10px;
+    word-break: break-all;
+    
 }
 
 .note-img {
-    border: gold 2px solid;
+    border: lightgray 2px solid;
     display: flex;
     flex-direction: column;
     text-align: center;

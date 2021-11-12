@@ -2,8 +2,8 @@ export default {
 
     props: ['todo'],
     template: `
-<section class="note-todo-preview" :class="showTodoDone" @click="toggleTodo">
-    {{todo.txt}}   <button @click.stop="removeListElement"> x </button>
+<section class="note-todo-preview" @click="toggleTodo">
+    <div :class="showTodoDone">{{todo.txt}}</div> <button @click.stop="removeListElement"> x </button>
 </section>
     `
     ,

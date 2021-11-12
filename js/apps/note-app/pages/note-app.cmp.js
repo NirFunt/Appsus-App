@@ -16,9 +16,9 @@ export default {
     template: `
 
     <section class="note-app">
-    <button @click="showNewNoteModal"> +</button>
+    <div class="add-note-btn"><button @click="showNewNoteModal"> New Note</button></div>
 
-    <h2 v-if="!isNewNoteModal"> Pinned </h2>
+    <h5> PINNED </h5>
     <section class="pinned-notes"  >
    <component v-for="(note,index) in pinnedNotes" :key="note.id" :class="note.info.color"
    :is="note.type"
@@ -28,9 +28,9 @@ export default {
     @changeColor="changeColor" @pinned="pin" @toggleTodo="toggleTodo" @edit="editNote">
     </component>
     </section>
-
+<hr>
     <!-- v-if="!isNewNoteModal && !isEditModal -->
-    <h2 v-if="!isNewNoteModal"> Not Pinned </h2>
+    <h5> OTHERS </h5>
         <section class="unpinned-notes" >
    <component v-for="(note,index) in unpinnedNotes" :key="note.id" :class="note.info.color"
    :is="note.type"
@@ -54,21 +54,21 @@ export default {
             <label> Enter Title </label>
             <input type="text" v-model="emptyNote.info.title">
             <label> Enter Text </label>
-            <input type="text" v-model="emptyNote.info.txt">
+            <input v-model="emptyNote.info.txt"> 
             </div>
 
             <div v-if="selectedEmptyNote==='Image'" >
-            <label> Enter Image Url </label>
-            <input type="text" v-model="emptyNote.info.url" >
             <label> Enter Image Title </label>
             <input type="text" v-model="emptyNote.info.title">
+            <label> Enter Image Url </label>
+            <input type="text" v-model="emptyNote.info.url" >
             </div>
 
             <div v-if="selectedEmptyNote==='Video'" >
-            <label> Add Video Code </label>
-            <input type="text" v-model="emptyNote.info.url" >
             <label> Enter Video Title </label>
             <input type="text" v-model="emptyNote.info.label">
+            <label> Add Video Code </label>
+            <input type="text" v-model="emptyNote.info.url" >
             </div>
 
             <div v-if="selectedEmptyNote==='Todos'" >
@@ -76,9 +76,9 @@ export default {
             <input type="text" v-model="emptyNote.info.label" >
             <label> Enter New Todo  </label>
             <input type="text" v-model="emptyTodo.txt" >
-            <button @click="getEmptyTodo" > Add Todo </button>
+            <button @click="getEmptyTodo" class="add-edit-todo-btn" > Add Todo </button>
            
-            <ul> <li v-for="todo in emptyNote.info.todos"> {{todo.txt}}
+            <ul> <li v-for="todo in emptyNote.info.todos" class="todo-list-add"> {{todo.txt}}
             <button @click="removeTempTodo(todo.id)">x</button></li></ul>
             </div>
 
@@ -140,7 +140,7 @@ export default {
         },
 
         showNewNoteModal() {
-            this.isNewNoteModal = !this.isNewNoteModal;
+            this.isNewNoteModal = true;
             this.selectedEmptyNote = "Text";
             this.emptyNote = noteService.getEmptyTxtNote();
         },

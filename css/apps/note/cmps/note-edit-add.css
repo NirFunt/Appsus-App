@@ -35,3 +35,29 @@
   .add-edit-buttons button:hover {
     background-color: rgb(148, 218, 255);
    }
+
+.add-note-btn {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.add-note-btn button {
+   background-color: rgb(153, 254, 255);
+   border-radius: 10px;
+   font-size: 1.3rem;
+   border: rgb(148, 218, 255) 2px solid;
+   cursor: pointer;
+   transition: 0.5s;
+}
+
+.add-note-btn button:hover {
+    transform: scale(150%);
+ }
+
+.add-edit-todo-btn {
+    margin-top: 10px;
+    background-color: rgb(153, 254, 255);
+    border-radius: 5px;
+    cursor: pointer;
+}

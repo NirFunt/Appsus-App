@@ -1,10 +1,14 @@
 .note-app {
     /* display: flex; */
-    flex-direction: column;
+    /* flex-direction: column;
     align-items: center;
     gap: 15px;
-    flex-wrap: wrap;
-    
+    flex-wrap: wrap; */
+    background-image: url('../../../../img/note-app3.jpg');
+}
+
+.note-app h5 {
+    margin: 10px 10px;
 }
 
 .note-app section {
@@ -12,6 +16,7 @@
 }
 
 .pinned-notes {
+    padding: 10px 10px;
     display: grid;
     gap: 15px;
     /* flex-wrap: wrap; */
@@ -33,7 +38,7 @@
     /* display: flex;
     gap: 15px;
     flex-wrap: wrap; */
-
+    padding: 10px 10px;
     display: grid;
     gap: 15px;
     align-items: start;
@@ -48,6 +53,15 @@
     text-decoration: none;
 }
 
+.note-todo-preview {
+    display: flex;
+    justify-content: space-between;
+}
 
+.todo-list-add {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
 
 

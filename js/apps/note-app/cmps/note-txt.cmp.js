@@ -7,7 +7,7 @@ export default {
     props: ['info','noteid'],
     template: `
 <section class="note-txt">
-<h4> {{info.title}} </h4>
+<h3> {{info.title}} </h3>
 <p> {{info.txt}} </p>
 <note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor"
 @pinned="pin" @edit="editNote"/>
