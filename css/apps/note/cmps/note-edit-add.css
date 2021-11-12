@@ -44,22 +44,17 @@
     gap: 5px;
 }
 
-.add-note-filter {
-   background-color: rgb(153, 254, 255);
-   border-radius: 10px;
-   font-size: 1.3rem;
-   border: rgb(148, 218, 255) 2px solid;
-   cursor: pointer;
-   transition: 0.5s;
-}
 
 .add-note-filter button:hover {
     transform: scale(150%);
  }
 
-.add-edit-todo-btn {
+.add-note-filter button {
     margin-top: 10px;
     background-color: rgb(153, 254, 255);
-    border-radius: 5px;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    border: rgb(148, 218, 255) 2px solid;
     cursor: pointer;
+    transition: 0.5s;
 }

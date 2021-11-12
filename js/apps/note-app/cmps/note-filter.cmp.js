@@ -7,16 +7,22 @@ export default {
     template: `
         <section class="note-filter">
         <input type="text" v-model="filterBy.name" @input="filter">
-        <!-- <label> Low price
-        <input type="range" min="0" max="200" v-model=filterObj.byLowPrice title="low price" @change="filter">
-        {{filterObj.byLowPrice}} -->
-     
+
+        <input type="checkbox" v-model="filterBy.isNoteText" @input="filter" >
+        <label> Text </label>
+        <input type="checkbox" v-model="filterBy.isNoteVideo" @input="filter" >
+        <label> Video </label>
+        <input type="checkbox" v-model="filterBy.isNoteImage" @input="filter" >
+        <label> Image </label>
+        <input type="checkbox" v-model="filterBy.isNoteTodos" @input="filter" >
+        <label> Todos </label>
+      
         </section>
     `,
 
     data() {
         return {
-         filterBy : {name : '', lowPrice: 10},
+         filterBy : {name : '', isNoteText : true, isNoteVideo : true, isNoteImage : true, isNoteTodos : true},
         };
     },
     created() {
