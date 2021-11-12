@@ -6,9 +6,7 @@ export default {
     props:[],
     template: `
         <section class="note-filter">
-        <label> Search 
         <input type="text" v-model="filterBy.name" @input="filter">
-        </label>
         <!-- <label> Low price
         <input type="range" min="0" max="200" v-model=filterObj.byLowPrice title="low price" @change="filter">
         {{filterObj.byLowPrice}} -->

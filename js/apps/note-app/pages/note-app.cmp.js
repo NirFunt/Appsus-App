@@ -17,8 +17,10 @@ export default {
 
     template: `
     <section class="note-app">
+    <div class="add-note-filter">
     <note-filter @filtered="setFilter"/> 
-    <div class="add-note-btn"><button @click="showNewNoteModal"> New Note</button></div>
+    <button @click="showNewNoteModal"> New Note</button>
+    </div>
 
     <h5> PINNED </h5>
     <section class="pinned-notes"  >
@@ -215,6 +217,11 @@ export default {
         },
         setFilter (filterBy) {
             this.filterBy = filterBy;
+            noteService.query(this.filterBy)
+            .then(allNotes => {
+                this.pinnedNotes = allNotes.filter(note => note.isPinned);
+                this.unpinnedNotes = allNotes.filter(note => !note.isPinned);
+            });
         }
     },
 

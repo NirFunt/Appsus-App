@@ -27,15 +27,15 @@ _createNotes();
 
 function query(filterBy = null) {
   return asyncStorageService.query(NOTES_KEY)
-  .then (notes => {
-    if (!filterBy) return notes
-    else {
-      notes = notes.filter(note => {
-        
-        return note;
+    .then(notes => {
+      if (!filterBy) return notes
+      const SearchedStr = filterBy.name.toLowerCase();
+      // console.log(notes)
+      return notes.filter(note => {
+        if (note.info.title) return note.info.title.toLowerCase().includes(SearchedStr);
+        if (note.info.label) return note.info.label.toLowerCase().includes(SearchedStr);
       })
-    }
-  })
+    })
   // return Promise.resolve(notes);
 }
 
