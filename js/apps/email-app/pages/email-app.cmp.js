@@ -5,10 +5,11 @@ import emailList from "../cmps/email-list.cmp.js";
 export default {
     template: `    
 <section class="email-app flex space-between">
-    <email-filter-nav @filter="setFilter" @send="sendMessage" :user="user"/>
-    <email-list :emails="emails" @trash="moveToTrash" v-if="emails" />
-    <div v-else>
-        <p><strong>{{this.ifEmptyMsg}}</strong></p>
+    <email-filter-nav @filter="setFilter" @send="sendMessage" @filterStarred="setFilter" :user="user"/>
+    <email-list :emails="emails" @trash="moveToTrash" @star="moveToStarred" @read="setRead" @filterTxt="setFilter" v-if="emails" />
+    <div class="empty-msg flex flex-column" v-else>
+        <img src="/img/empty.png">
+        <p><strong>{{ifEmptyMsg}}</strong></p>
     </div>
 </section>
     `
@@ -38,21 +39,40 @@ export default {
             emailService.query(this.filterBy)
                 .then(emails => {
                     this.emails = emails
-                    if (!emails.length) {
-                        console.log('empty arrays');
-                        this.showEmptyMsg();
-                    }
+                    // if (!this.emails.length) {
+                    //     console.log('empty arrays');
+                    //     console.log(this.emails);
+                    //     this.emails = false;
+                    //     this.showEmptyMsg();
+                    // }
                 })
         },
         loadUser() {
             this.user = emailService.loggedUserQuery()
         },
         showEmptyMsg() {
-            this.ifEmptyMsg = 'No ' + this.filterBy + ' mails';
+            this.ifEmptyMsg = this.filterBy.charAt(0).toUpperCase() + this.filterBy.slice(1, this.filterBy.length) + ' folder is empty'
+            console.log(this.ifEmptyMsg);
         },
         moveToTrash(email) {
             email.status = 'trash'
             console.log(email)
+            emailService.save(email)
+                .then(() => {
+                    this.loadEmails();
+                    // console.log('moved to trash email//ADD EVENT BUS MSG')
+                })
+        }, moveToStarred(email) {
+            email.isStarred = !email.isStarred;
+            console.log('email', email);
+            emailService.save(email)
+                .then(() => {
+                    this.loadEmails();
+                    // console.log('moved to trash email//ADD EVENT BUS MSG')
+                })
+        },
+        setRead(email) {
+            email.isRead = !email.isRead;
             emailService.save(email)
                 .then(() => {
                     this.loadEmails();

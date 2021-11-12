@@ -31,12 +31,21 @@
     margin-right: 5px;
 }
 
-.delete-btn {
+.yellow {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+.delete-btn, .read-btn, .star {
     padding: 0;
     border: none;
     background: none;
     font-size: 1.3rem;
-    color: rgb(51, 48, 48);
+    color: #767676;
+}
+
+.read-btn:hover, .star:hover {
+    color: rgb(32, 30, 30);
 }
 
 .delete-btn:hover {
@@ -136,4 +145,44 @@
 
 .filter-nav {
     padding: 10px;
+}
+
+.filter-nav button {
+    /* margin-left: 5px; */
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 1.7rem;
+    color: #767676;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-left: 6px solid transparent;
+}
+
+.filter-nav button:hover {
+    border-left: 6px solid purple;
+}
+
+/* EMPTY MSG SECTION */
+
+.empty-msg {
+    margin: 0;
+    font-size: 2rem;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-self: center; */
+    align-items: center;
+    color: rgb(99, 104, 104);
+}
+
+.empty-msg p {
+    margin-top: 12px;
+}
+
+.empty-msg img {
+    width: 80px;
+    height: 80px;
+    margin-top: 30px;
 }

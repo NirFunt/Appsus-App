@@ -3,14 +3,30 @@ import { utilService } from '../../../services/util.service.js';
 export default {
     props: ['user'],
     template: `
-    
-<section class="filter-nav flex flex-column">
+     <!-- @mouseenter="expandNav" @mouseleave="diminishNav" -->
+<section class="filter-nav flex flex-column align-center">
     <button @click="sendMsgModal=true">+</button>
-    <button @click="filterInbox">inbox</button>
-    <button>starred</button>
-    <button @click="filterSent">sent</button>
-    <button @click="filterTrash">trash</button>
-    <button @click="filterDrafts">drafts</button>
+    <button @click="filterInbox">
+    <i class="fas fa-inbox"></i>
+    <span>{{iconTxt.inbox}}</span>
+    </button>
+    <button @click="filterStarred">
+    <i class="far fa-star"></i>
+    <!-- <span>iconTxt.starred</span> -->
+    </button>
+    <button @click="filterSent">
+    <i class="fas fa-paper-plane"></i>
+    <!-- <span>iconTxt.sent</span> -->
+    </button>
+    <button @click="filterTrash">
+    <i class="fas fa-trash"></i>
+    <!-- <span>iconTxt.trash</span> -->
+    </button>
+    <button @click="filterDrafts">
+    <i class="fas fa-file"></i>
+    <!-- <span>iconTxt.draft</span> -->
+    </button>
+<!-- SORRY FOR WET CODE -->
 
     <div class="main-screen" v-if="sendMsgModal" @click.self="closeIfEmpty">
         <div class="email-modal">
@@ -53,7 +69,15 @@ export default {
                 subject: '',
                 body: '',
                 status: ''
+            },
+            iconTxt: {
+                inbox: '',
+                starred: '',
+                sent: '',
+                trash: '',
+                draft: ''
             }
+            // isHover: false
         };
     },
     created() {
@@ -78,6 +102,9 @@ export default {
             this.$emit('filter', 'draft')
 
         },
+        filterStarred() {
+            this.$emit('filter', 'starred')
+        },
         closeIfEmpty() {
             console.log(this.newMsg.to);
             if (this.newMsg.to || this.newMsg.subject || this.newMsg.body) {
@@ -85,9 +112,6 @@ export default {
 
             } else this.sendMsgModal = false;
             this.clearMsg();
-
-
-
         },
         send() {
             this.newMsg.status = 'sent';
@@ -114,6 +138,31 @@ export default {
             this.newMsg.body = '';
         }
 
+
+    },
+    computed: {
+        expandNav() {
+            console.log('hovering bro');
+            this.iconTxt = {
+                inbox: 'Inbox',
+                starred: 'Starred',
+                sent: 'Sent',
+                trash: 'Trash',
+                draft: 'Draft'
+            }
+            return this.iconTxt
+        },
+        diminishNav() {
+            console.log('whats the opposite of hovering bro')
+            this.iconTxt = {
+                inbox: '',
+                starred: '',
+                sent: '',
+                trash: '',
+                draft: ''
+            }
+            return this.iconTxt
+        }
 
     },
     components: {

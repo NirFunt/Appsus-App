@@ -1,10 +1,11 @@
 import emailPreview from "./email-preview.cmp.js"
+import searchBar from "./search-bar.cmp.js"
 
 export default {
     props: ['emails'],
     template: `
         <section class="email-list flex flex-column" v-if=!isReadModal :filter="passDown">
-            <!-- <search-bar/> -->
+            <search-bar/>
         <ul>
             <li v-for="email in emails" :key="email.id" class="email-preview-container flex flex-column" :class={read:email.isRead}>
                 <email-preview :email="email" @click.native="openModal(email)"  @openModal="openModal" />
@@ -54,7 +55,8 @@ export default {
 
     },
     components: {
-        emailPreview
+        emailPreview,
+        searchBar
 
     }
 
