@@ -3,10 +3,12 @@ import { emailService } from "../services/email-service.js"
 export default {
     props: ['email'],
     template: `
-        <div class="email-preview flex space-between">
+        <div class="email-preview flex space-between" >
             <section class=flex>
-            <input type="checkbox" id="emailCheck" name="emailCheck" @click.stop>
-                 <span class="star" @click.stop="markStarred">
+                <label class="checkbox" for="myCheckBox">
+                    <input class="checkbox-input" type="checkbox"  id="myCheckBox" name="pageCheckbox" @click.stop>
+                </label>
+                 <span class="star"  @click.stop="markStarred">
                  <i class="far fa-star"></i>
                  </span>
                  <p>{{email.from}}</p>
@@ -16,13 +18,15 @@ export default {
                   <p>{{getLimitedTxt}}</p>
             </section>
             <section class="actions">
-                 <button class="read-btn" @click.stop="markAsRead">Read/unread</button>
+                 <button class="read-btn" @click.stop="markAsRead">
+                 <i class="fas fa-envelope-open-text" v-if="!email.isRead"></i>
+                 <i class="fas fa-envelope" v-else></i>
+                 </button>
                  <button class="delete-btn" @click.stop="moveToTrash">
                  <i class="fas fa-trash"></i>
                  </button>
             </section>
            </div>
-      
     `,
     data() {
         return {
@@ -41,20 +45,17 @@ export default {
     },
     methods: {
         markAsRead() {
-            // console.log(this.email.isRead);
-            this.email.isRead = !this.email.isRead;
-            console.log(this.email);
-            // emailService.save(this.book)
-            //     .then(() => {
-            //         this.parent.$emit('render')
-            //     })
+            this.$parent.$emit('read', this.email);
+            console.log('read');
         },
         moveToTrash() {
             console.log(this.email);
             this.$parent.$emit('trash', this.email);
+            console.log('trashed');
         },
         markStarred() {
             console.log('starred');
+            this.$parent.$emit('star', this.email);
         },
         // deleteEmail() {
         //     emailService.remove(this.email)

@@ -33,7 +33,7 @@ function _createEmails() {
     if (!emails || !emails.length) {
         emails = [];
         emails.push(_createEmail('Wedding invitation', 'We are very excited ' + utilService.makeLorem(25), 'avi123@gmail.com', 'inbox'));
-        emails.push(_createEmail('Riot Games Presents Arcane', 'Greetins Summoners ' + utilService.makeLorem(45), 'Riotgames@gmail.com', 'inbox'));
+        emails.push(_createEmail('Riot Games Presents Arcane', 'Greetings Summoners ' + utilService.makeLorem(45), 'Riotgames@gmail.com', 'inbox'));
         emails.push(_createEmail('Black Friday Sales', 'Available Only For the next 40hours ' + utilService.makeLorem(25), 'asos@world.ol.com', 'inbox'));
         emails.push(_createEmail('Binance Account security', 'We have recently ' + utilService.makeLorem(25), 'binance@service.com', 'inbox'));
         emails.push(_createEmail('Wedding invitation ', utilService.makeLorem(25), 'avi123@gmail.com', 'inbox'));
@@ -55,6 +55,7 @@ function _createEmail(subject, body, from, status) {
         status,
         isRead: false,
         isStarred: false,
+        isChecked: false,
         sentAt: Date.now(),
         from
     }
@@ -64,6 +65,23 @@ function _createEmail(subject, body, from, status) {
 function query(filterBy = null) {
     return asyncStorageService.query(EMAIL_KEY).then((mails) => {
         if (!filterBy) return mails
+        else if (filterBy === 'starred') {
+            return mails.filter(email => {
+                return email.isStarred;
+            })
+        }
+        else if (filterBy.filterBy === 'txt') {
+            console.log('FAFSAFASFA');
+
+            return mails.filter(email => {
+                console.log(email.body);
+                var words = email.body.split(' ');
+                var lowerCaseWords = words.map(word => word.toLowerCase())
+                if (lowerCaseWords.includes(filterBy.msg.toLowerCase())) {
+                    return email
+                }
+            })
+        }
         return mails.filter(email => {
             return email.status === filterBy
         })
