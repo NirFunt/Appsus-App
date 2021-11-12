@@ -2,6 +2,7 @@ import noteTxt from '../cmps/note-txt.cmp.js';
 import noteImg from '../cmps/note-img.cmp.js';
 import noteTodos from '../cmps/note-todos.cmp.js';
 import noteVideo from '../cmps/note-video.cmp.js';
+import noteFilter from '../cmps/note-filter.cmp.js';
 
 import { noteService } from '../services/note.service.js';
 
@@ -10,12 +11,13 @@ export default {
         noteTxt,
         noteImg,
         noteTodos,
-        noteVideo
+        noteVideo,
+        noteFilter
     },
 
     template: `
-
     <section class="note-app">
+    <note-filter @filtered="setFilter"/> 
     <div class="add-note-btn"><button @click="showNewNoteModal"> New Note</button></div>
 
     <h5> PINNED </h5>
@@ -101,6 +103,7 @@ export default {
             emptyNote: null,
             emptyTodo: '',
             isEditModal:false,
+            filterBy: null,
 
         };
     },
@@ -209,6 +212,9 @@ export default {
         closeAddEditModal () {
             this.isNewNoteModal = false;
             this.isEditModal =false;
+        },
+        setFilter (filterBy) {
+            this.filterBy = filterBy;
         }
     },
 

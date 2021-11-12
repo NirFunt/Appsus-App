@@ -25,8 +25,17 @@ _createNotes();
 
 
 
-function query() {
-  return asyncStorageService.query(NOTES_KEY);
+function query(filterBy = null) {
+  return asyncStorageService.query(NOTES_KEY)
+  .then (notes => {
+    if (!filterBy) return notes
+    else {
+      notes = notes.filter(note => {
+        
+        return note;
+      })
+    }
+  })
   // return Promise.resolve(notes);
 }
 
