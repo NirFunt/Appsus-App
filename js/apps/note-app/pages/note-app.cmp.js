@@ -217,6 +217,7 @@ export default {
         },
         setFilter (filterBy) {
             this.filterBy = filterBy;
+            console.log(this.filterBy)
             noteService.query(this.filterBy)
             .then(allNotes => {
                 this.pinnedNotes = allNotes.filter(note => note.isPinned);

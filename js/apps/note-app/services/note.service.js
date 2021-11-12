@@ -24,21 +24,18 @@ var notes;
 _createNotes();
 
 
-
 function query(filterBy = null) {
   return asyncStorageService.query(NOTES_KEY)
     .then(notes => {
       if (!filterBy) return notes
       const SearchedStr = filterBy.name.toLowerCase();
-      console.log(notes)
       return notes.filter(note => {
 
         if (note.info.title) if (note.info.title.toLowerCase().includes(SearchedStr)) {
-
           if ((filterBy.isNoteText && note.type === 'note-txt') ||
             (filterBy.isNoteVideo && note.type === 'note-video') ||
             (filterBy.isNoteImage && note.type === 'note-img') ||
-            (filterBy.isNoteTodos && note.type === 'note-todos')) return true;
+            (filterBy.isNoteTodos && note.type === 'note-todos')) { return true; }
           return false;
         } else return false;
 
@@ -49,41 +46,9 @@ function query(filterBy = null) {
             (filterBy.isNoteTodos && note.type === 'note-todos')) return true;
           return false;
         } else return false;
-
-
-        //   if (note.info.title) if(note.info.title.toLowerCase().includes(SearchedStr)) {
-        //     console.log('here')
-        //     if (filterBy.isNoteText && note.type === 'note-txt') return true;
-        //     if (filterBy.isNoteVideo && note.type === 'note-video') return true;
-        //     if (filterBy.isNoteImage && note.type === 'note-img') return true;
-        //     if (filterBy.isNoteTodos && note.type === 'note-todos') return true;
-        //     return false;
-        //   } else return false;
-
-        //   if (note.info.label) if(note.info.label.toLowerCase().includes(SearchedStr)){
-        //     console.log('here2')
-        //   if (filterBy.isNoteText && note.type === 'note-txt') return true;
-        //   if (filterBy.isNoteVideo && note.type === 'note-video') return true;
-        //   if (filterBy.isNoteImage && note.type === 'note-img') return true;
-        //   if (filterBy.isNoteTodos && note.type === 'note-todos') return true;
-        //   return false;
-        // } else return false;
-
-
-        // if (note.info.title) noteTemp = note.info.title.toLowerCase().includes(SearchedStr);
-        // if (note.info.label) noteTemp =  note.info.label.toLowerCase().includes(SearchedStr);
-
-        // if (filterBy.isNoteText && noteTemp.type === 'note-txt') return true;
-        // if (filterBy.isNoteVideo && noteTemp.type === 'note-video') return true;
-        // if (filterBy.isNoteImage && noteTemp.type === 'note-img') return true;
-        // if (filterBy.isNoteTodos && noteTemp.type === 'note-todos') return true;
-
-
       })
     })
   // return Promise.resolve(notes);
-
-
 }
 
 function removeNote(noteId) {
