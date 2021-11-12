@@ -11,10 +11,15 @@
 @import "./apps/note/cmps/note-actions.css";
 @import "./apps/note/cmps/note-edit-add.css";
 
+/* BOOKS  */
+@import "./apps/books/pages/books.css";
 
 /* EMAIL  */
 @import "./parts/helpers.css";
 @import "./apps/email/email-style.css";
+
+
 .main-section {
     height: 100vh;
 }
+
