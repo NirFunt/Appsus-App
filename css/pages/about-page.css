@@ -1,5 +1,5 @@
 .about-page {
-    background-color: aquamarine;
+    background-image: url('../../img/note-app3.jpg');
     height: 90vh;
     display: flex;
     flex-direction: column;
@@ -8,5 +8,5 @@
 }
 
 .about-page img{ 
-    width: 60%;
+    width: 40%;
 }

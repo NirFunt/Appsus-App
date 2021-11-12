@@ -63,7 +63,7 @@ export default {
             this.$router.push('/book');
             eventBus.$emit('showMsg',
                 {
-                    txt: `review by <span> ${review.fullName} </span> was added to the book <span> ${this.book.title} </span>!`,
+                    txt: `review by ${review.fullName} was added to the book ${this.book.title}!`,
                     type: 'success', url: `/details/${this.book.id}`
                 })
         },
