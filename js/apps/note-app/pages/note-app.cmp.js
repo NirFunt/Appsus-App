@@ -50,31 +50,43 @@ export default {
                 <option>Todos</option>
             </select>
 
-            <button @click="addNote" v-if="!isEditModal"> Add </button>
-            <button @click="updateNote" v-if="isEditModal"> Update </button>
-
             <div v-if="selectedEmptyNote==='Text'" >
+            <label> Enter Title </label>
             <input type="text" v-model="emptyNote.info.title">
+            <label> Enter Text </label>
             <input type="text" v-model="emptyNote.info.txt">
             </div>
 
             <div v-if="selectedEmptyNote==='Image'" >
+            <label> Enter Image Url </label>
             <input type="text" v-model="emptyNote.info.url" >
+            <label> Enter Image Title </label>
             <input type="text" v-model="emptyNote.info.title">
             </div>
 
             <div v-if="selectedEmptyNote==='Video'" >
+            <label> Add Video Code </label>
             <input type="text" v-model="emptyNote.info.url" >
+            <label> Enter Video Title </label>
             <input type="text" v-model="emptyNote.info.label">
             </div>
 
             <div v-if="selectedEmptyNote==='Todos'" >
+            <label> Enter Label  </label>
             <input type="text" v-model="emptyNote.info.label" >
+            <label> Enter New Todo  </label>
             <input type="text" v-model="emptyTodo.txt" >
+            <button @click="getEmptyTodo" > Add Todo </button>
+           
             <ul> <li v-for="todo in emptyNote.info.todos"> {{todo.txt}}
             <button @click="removeTempTodo(todo.id)">x</button></li></ul>
-            <button @click="getEmptyTodo" > Add Todo </button>
             </div>
+
+            <article class="add-edit-buttons">
+            <button @click="addNote" v-if="!isEditModal"> Add </button>
+            <button @click="updateNote" v-if="isEditModal"> Update </button>
+            <button @click="closeAddEditModal"> x </button>
+            </article>
     </section>
 
 </section>
@@ -129,6 +141,8 @@ export default {
 
         showNewNoteModal() {
             this.isNewNoteModal = !this.isNewNoteModal;
+            this.selectedEmptyNote = "Text";
+            this.emptyNote = noteService.getEmptyTxtNote();
         },
         emptyNoteTypeChosen() {
             let newNote = null;
@@ -191,6 +205,10 @@ export default {
             this.isNewNoteModal = false;
             noteService.editNote (this.emptyNote)
             .then(() => this.query())
+        },
+        closeAddEditModal () {
+            this.isNewNoteModal = false;
+            this.isEditModal =false;
         }
     },
 

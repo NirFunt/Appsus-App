@@ -96,8 +96,8 @@ function getEmptyTxtNote() {
     type: "note-txt",
     isPinned: false,
     info: {
-      title: 'Enter Title',
-      txt: "Enter Text",
+      title: '',
+      txt: "",
       color: 'bcg-purple'
     }
   }
@@ -110,8 +110,8 @@ function getEmptyImgNote() {
     type: "note-img",
     isPinned: false,
     info: {
-      url: "Enter Image Url",
-      title: "Enter Image Title",
+      url: "",
+      title: "",
       color: 'bcg-purple'
     }
   }
@@ -124,7 +124,7 @@ function getEmptyVideoNote() {
     type: "note-video",
     isPinned: false,
     info: {
-      label: "Enter Video Label",
+      label: "",
       url:'https://www.youtube.com/embed/'
       , color: 'bcg-purple'
     }
@@ -138,8 +138,8 @@ function getEmptyTodosNote() {
     type: "note-todos",
     isPinned: false,
     info: {
-      label: "Enter Label",
-      color: 'bcg-purple',
+      label: "",
+      color: '',
       todos: []
     }
   }
@@ -149,7 +149,7 @@ function getEmptyTodosNote() {
 function getEmptyTodo() {
   const todo = {
     id: utilService.makeId(),
-    txt: "Write a Todo Here",
+    txt: "",
     doneAt: Date.now(),
   }
   return todo;
