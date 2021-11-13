@@ -86,10 +86,10 @@ function query(filterBy = null) {
             console.log('FAFSAFASFA');
             return mails.filter(email => {
                 console.log(email.body);
-                var bodyWords = email.body.split(' ');
-                var subjectWords = email.subject.split(' ');
-                var words = bodyWords.concat(subjectWords);
-                var lowerCaseWords = words.map(word => word.toLowerCase())
+                // var bodyWords = email.body.split(' ');
+                // var subjectWords = email.subject.split(' ');
+                // var words = bodyWords.concat(subjectWords);
+                // var lowerCaseWords = words.map(word => word.toLowerCase())
                 var strForFilter = email.body + ' ' + email.subject + ' ' + email.from
                 var lowercaseStr = strForFilter.toLocaleLowerCase();
                 if (lowercaseStr.includes(filterBy.msg.toLowerCase())) {

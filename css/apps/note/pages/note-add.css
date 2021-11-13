@@ -1,6 +1,6 @@
-
 .note-add {
-    background-image: url('../../../../img/note-app3.jpg');
+    /* background-image: url('../../../../img/note-app3.jpg'); */
+    /* background-image: linear-gradient(rgb(29, 0, 56), rgb(84, 67, 107), rgb(80, 203, 147), rgb(113, 239, 163)); */
     height: 90vh;
     display: flex;
     justify-content: center;
@@ -39,20 +39,20 @@
 }
 
 .add-edit-buttons {
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
 }
 
 .add-edit-buttons button {
-   background-color: rgb(153, 254, 255);
-   border-radius: 5px;
-   cursor: pointer;
-  }
+    background-color: rgb(153, 254, 255);
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-  .add-edit-buttons button:hover {
+.add-edit-buttons button:hover {
     background-color: rgb(148, 218, 255);
-   }
+}
 
 .add-note-filter {
     display: flex;
@@ -62,10 +62,9 @@
     gap: 5px;
 }
 
-
 .add-note-filter button:hover {
     transform: scale(150%);
- }
+}
 
 .add-note-filter button {
     margin-top: 10px;

@@ -1,10 +1,4 @@
-/* FONTS */
-
-@font-face {
-    font-family: "font awesome";
-    src: url(/fonts/fa/fa-brands-400.ttf);
-}
-
+@import "/css/parts/fonts.css";
 /* MAIN APP */
 
 .email-app {
@@ -13,7 +7,8 @@
     width: 90%;
     height: 90vh;
     /* height: 90vh; */
-    background-image: url('../../../img/note-app3.jpg');
+    /* background-image: url('../../../img/note-app3.jpg'); */
+    /* background-image: linear-gradient(rgb(84, 67, 107), rgb(80, 203, 147), rgb(113, 239, 163)); */
 }
 
 /* EMAIL-PREVIEW */
@@ -22,6 +17,14 @@
 
 .actions {
     font-family: fa;
+}
+
+.actions button {
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 1.3rem;
+    color: #767676;
 }
 
 /* .star::before {
@@ -88,7 +91,7 @@
 }
 
 .read {
-    background-color: #f5f7f7;
+    background-color: #a1a1a13d;
 }
 
 /* preview-modal */
@@ -205,4 +208,80 @@
     width: 80px;
     height: 80px;
     margin-top: 30px;
+}
+
+/* SEARCHBAR NAV */
+
+.search-bar-nav {
+    margin-top: 20px;
+}
+
+:root {
+    --rad: .7rem;
+    --dur: .3s;
+    --color-dark: #2f2f2f;
+    --color-light: #fff;
+    --color-brand: rgb(208, 202, 178);
+    --font-fam: 'roboto con';
+    --height: 2rem;
+    --btn-width: 3rem;
+    --bez: cubic-bezier(0, 0, 0.43, 1.49);
+}
+
+.search-bar button {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    width: var(--btn-width);
+    font-weight: bold;
+    background: var(--color-brand);
+    border-radius: 0 var(--rad) var(--rad) 0;
+}
+
+.search-bar form {
+    position: relative;
+    width: 40rem;
+    background: var(--color-brand);
+    border-radius: var(--rad);
+    margin-bottom: 20px;
+    margin-left: 10px;
+    /* padding: 10px; */
+}
+
+.search-bar input, .search-bar button {
+    height: var(--height);
+    font-family: var(--font-fam);
+    border: 0;
+    color: var(--color-dark);
+    font-size: 1.8rem;
+}
+
+input[type="search"] {
+    outline: 0;
+    width: 100%;
+    background: var();
+    padding: 0 1.6rem;
+    border-radius: var(--rad);
+    appearance: none;
+    transition: all var(--dur) var(--bez);
+    transition-property: width, border-radius;
+    z-index: 1;
+    position: relative;
+}
+
+.search-bar input:not(:placeholder-shown) {
+    border-radius: var(--rad) 0 0 var(--rad);
+    width: calc(100% - var(--btn-width));
+}
+
+label {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
 }

@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "font awesome";
+    src: url(/fonts/fa/fa-brands-400.ttf);
+}
+
+@font-face {
+    font-family: "roboto con";
+    src: url(/fonts/RobotoCondensed-Regular.ttf)
+}
+
+@font-face {
+    font-family: "oswald";
+    src: url(/fonts/Oswald-Regular.ttf)
+}

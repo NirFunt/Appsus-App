@@ -1,18 +1,21 @@
-
 .red {
     color: red;
 }
 
 .green {
     color: green;
-} 
+}
 
 /* animations  */
 
 .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.fade-enter, .fade-leave-to
+/* .fade-leave-active below version 2.1.8 */
+
+    {
     opacity: 0;
 }
 
@@ -25,7 +28,6 @@
 .active-link {
     color: darkgoldenrod;
 }
-
 
 /* USER-MSG */
 
@@ -41,6 +43,7 @@
 .user-msg span {
     color: blue;
 }
+
 .success {
     color: green;
     border: green solid 3px;
@@ -53,14 +56,13 @@
     background-color: honeydew;
 }
 
-
 /* BOOK APP PAGE  */
 
-    .book-app { 
+.book-app {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('../../../../img/note-app3.jpg');
+    /* background-image: url('../../../../img/note-app3.jpg'); */
     /* height: 90vh; */
     /* max-height: 90vh; */
 }
@@ -71,7 +73,7 @@
 }
 
 .book-list ul {
-    display: flex;  
+    display: flex;
     flex-wrap: wrap;
     gap: 20px;
     list-style-type: none;
@@ -95,7 +97,6 @@
     width: 40%;
 }
 
-
 /* BOOK DETAILS PAGE */
 
 .book-details {
@@ -104,7 +105,7 @@
     align-items: center;
     gap: 10px;
     padding: 10px;
-    background-image: url('../../../../img/note-app3.jpg');
+    /* background-image: url('../../../../img/note-app3.jpg'); */
 }
 
 .book-details img {
@@ -124,21 +125,21 @@
     width: 200px;
 }
 
-.review-add ul{
+.review-add ul {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     list-style: none;
 }
 
-.review-add li{
+.review-add li {
     border: gray 1px solid;
 }
 
 /* BOOK ADD PAGE  */
 
 .book-add {
-    background-image: url('../../../../img/note-app3.jpg');
+    /* background-image: url('../../../../img/note-app3.jpg'); */
 }
 
 .add-new-book {
@@ -153,7 +154,7 @@
     cursor: pointer;
 }
 
-.new-book-search-list{
+.new-book-search-list {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
@@ -161,22 +162,22 @@
     margin: 0;
 }
 
-.new-book-search-list li{
+.new-book-search-list li {
     display: flex;
-   flex-direction: column;
-   gap: 10px;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.new-book-search-list li img{
+.new-book-search-list li img {
     width: 150px;
 }
 
-.new-book-search-list li  {
-   max-width: 150px;
+.new-book-search-list li {
+    max-width: 150px;
 }
 
 .search-book-header {
     display: flex;
     flex-direction: column;
-   align-items: center;
+    align-items: center;
 }

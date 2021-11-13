@@ -1,8 +1,29 @@
+@import "/css/parts/fonts.css";
 .app-header {
-    background-color: rgb(148, 218, 255);
-    height: 5vh;
+    /* height: 5vh; */
+    height: 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+    /* color: rgb(80, 203, 147) */
+    color: rgb(84, 67, 107);
+    font-family: "oswald";
+}
+
+.logo {
+    padding: 10px;
+    font-size: 2.5rem;
+    margin-left: 5px;
+}
+
+.header-nav {
+    font-size: 1.4rem;
+}
+
+.header-nav a {
+    text-decoration: none;
+}
+
+.header-nav a:not(:first-child) {
+    margin-right: 15px;
 }
