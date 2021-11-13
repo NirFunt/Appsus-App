@@ -82,7 +82,7 @@ export default {
             isEditModal:false,
         };
     },
-    mounted() {
+    created() {
       this.emptyNote = noteService.getEmptyVideoNote();
     },
     destroyed() {
@@ -125,7 +125,8 @@ export default {
         addNote() {
             this.isNewNoteModal = false;
             if (this.emptyNote) noteService.addNote(this.emptyNote)
-            this.$router.push('/note');
+            noteService.query()
+            .then(notes =>this.$router.push('/note'))
         },
         removeTempTodo(todoId) {
             console.log(todoId)

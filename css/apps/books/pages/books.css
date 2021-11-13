@@ -104,6 +104,7 @@
     align-items: center;
     gap: 10px;
     padding: 10px;
+    background-image: url('../../../../img/note-app3.jpg');
 }
 
 .book-details img {

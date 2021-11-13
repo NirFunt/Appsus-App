@@ -232,42 +232,7 @@ function _createNotes() {
           "color": "bcg-green"
         }
       },
-      {
-        "id": "uGpc4",
-        "type": "note-todos",
-        "isPinned": true,
-        "info": {
-          "label": "Shop List",
-          "color": "bcg-turquoise",
-          "todos": [
-            {
-              "id": "XgjhD",
-              "txt": "item 1",
-              "doneAt": 1636715838394
-            },
-            {
-              "id": "2HxgJ",
-              "txt": "item 2",
-              "doneAt": 1636715844376
-            },
-            {
-              "id": "FCR5v",
-              "txt": "item 3",
-              "doneAt": 1636715847192
-            },
-            {
-              "id": "yfSt0",
-              "txt": "item 4",
-              "doneAt": 1636715850183
-            },
-            {
-              "id": "XjGXJ",
-              "txt": "item 5",
-              "doneAt": 1636715853284
-            }
-          ]
-        }
-      },
+      
       {
         "id": "bzxgN",
         "type": "note-video",
@@ -278,26 +243,8 @@ function _createNotes() {
           "color": "bcg-light-green"
         }
       },
-      {
-        "id": "07sLm",
-        "type": "note-img",
-        "isPinned": true,
-        "info": {
-          "url": "https://www.nasa.gov/sites/default/files/styles/image_card_4x3_ratio/public/thumbnails/image/halloween_sun_2014_2k.jpg",
-          "title": "Image of the Sun",
-          "color": "bcg-purple"
-        }
-      },
-      {
-        "id": "WHBgM",
-        "type": "note-video",
-        "isPinned": true,
-        "info": {
-          "label": "Michael Kiwanuka - Cold Little Heart ",
-          "url": "https://www.youtube.com/embed/nOubjLM9Cbc",
-          "color": "bcg-purple"
-        }
-      },
+
+
       {
         "id": "SpBJt",
         "type": "note-img",
@@ -369,56 +316,6 @@ function _createNotes() {
           "color": "bcg-turquoise"
         }
       },
-      {
-        "id": "8a8cD",
-        "type": "note-img",
-        "isPinned": false,
-        "info": {
-          "url": "https://c4.wallpaperflare.com/wallpaper/415/195/652/spots-reflections-soft-light-wallpaper-preview.jpg",
-          "title": "Water Image",
-          "color": "bcg-light-green"
-        }
-      },
-      {
-        "id": "C49Am",
-        "type": "note-video",
-        "isPinned": false,
-        "info": {
-          "label": "Funny Video",
-          "url": "https://www.youtube.com/embed/vjoKyj51o_I",
-          "color": "bcg-purple"
-        }
-      },
-      {
-        "id": "ie2ry",
-        "type": "note-img",
-        "isPinned": false,
-        "info": {
-          "url": "https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-          "title": "Fether",
-          "color": "bcg-blue"
-        }
-      },
-      {
-        "id": "JHzsK",
-        "type": "note-img",
-        "isPinned": false,
-        "info": {
-          "url": "https://media.istockphoto.com/photos/colored-powder-explosion-on-black-background-picture-id1057506940?k=20&m=1057506940&s=612x612&w=0&h=3j5EA6YFVg3q-laNqTGtLxfCKVR3_o6gcVZZseNaWGk=",
-          "title": "Colors",
-          "color": "bcg-green"
-        }
-      },
-      {
-        "id": "a9Xp0",
-        "type": "note-video",
-        "isPinned": false,
-        "info": {
-          "label": "Michael Kiwanuka - Love & Hate",
-          "url": "https://www.youtube.com/embed/aMZ4QL0orw0",
-          "color": "bcg-purple"
-        }
-      }
     ]
   }
   storageService.saveToStorage(NOTES_KEY, notes);
