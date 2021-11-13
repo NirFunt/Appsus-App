@@ -18,7 +18,8 @@ export const noteService = {
   getEmptyTodosNote,
   getEmptyTodo,
   duplicateNote,
-  getEmptyAudioNote
+  getEmptyAudioNote,
+  getEmptyCanvasNote
 }
 
 const NOTES_KEY = 'notes';
@@ -195,6 +196,19 @@ function getEmptyAudioNote() {
   return noteAudio;
 }
 
+function getEmptyCanvasNote() {
+  const noteCanvas = {
+    id: utilService.makeId(),
+    type: "note-canvas",
+    isPinned: false,
+    info: {
+      title: ""
+      , color: 'bcg-purple'
+    }
+  }
+  return noteCanvas;
+}
+
 
 
 function _createNotes() {
@@ -265,6 +279,15 @@ function _createNotes() {
         "info" : {
           "title" : "Led Zeppelin - All My Love",
           "url" : "audio/Led Zeppelin_ All My Love (With Lyrics) (mp3cut.net).mp3",
+          "color": "bcg-turquoise"
+        }
+      },
+      {
+        "id":utilService.makeId(),
+        "type": "note-canvas",
+        "isPinned" :true,
+        "info" : {
+          "title" : "Good canvas",
           "color": "bcg-turquoise"
         }
       },

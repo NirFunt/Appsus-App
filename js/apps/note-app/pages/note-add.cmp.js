@@ -3,6 +3,7 @@ import noteImg from '../cmps/note-img.cmp.js';
 import noteTodos from '../cmps/note-todos.cmp.js';
 import noteVideo from '../cmps/note-video.cmp.js';
 import noteAudio from '../cmps/note-audio.cmp.js';
+import noteCanvas from '../cmps/note-canvas.cmp.js';
 
 import {eventBus} from '../services/event-bus.service.js';
 
@@ -14,7 +15,8 @@ export default {
         noteImg,
         noteTodos,
         noteVideo,
-        noteAudio
+        noteAudio,
+        noteCanvas
     },
 
     template: `
@@ -34,6 +36,7 @@ export default {
                 <option>Video</option>
                 <option>Todos</option>
                 <option>Audio</option>
+                <option>Canvas </option>
             </select>
 
             <div v-if="selectedEmptyNote==='Text'" >
@@ -73,6 +76,11 @@ export default {
             <input type="text" v-model="emptyNote.info.title">
             <label> Add Audio Url </label>
             <input type="text" v-model="emptyNote.info.url" >
+            </div>
+
+            <div v-if="selectedEmptyNote==='Canvas'" >
+            <label> Enter Audio Title </label>
+            <input type="text" v-model="emptyNote.info.title">
             </div>
 
             <article class="add-edit-buttons">
@@ -129,6 +137,9 @@ export default {
                 case 'Audio' : {
                     newNote = noteService.getEmptyAudioNote();
                 }
+                case 'Canvas' : {
+                    newNote = noteService.getEmptyCanvasNote();
+                }
             }
             this.emptyNote = newNote;
         },
@@ -167,9 +178,10 @@ export default {
                     } else if (note.type === 'note-todos') {
                         this.selectedEmptyNote = 'Todos'
                         this.emptyTodo = noteService.getEmptyTodo()
-                    }
-                    else if (note.type === 'note-audio') {
+                    } else if (note.type === 'note-audio') {
                         this.selectedEmptyNote = 'Audio'
+                    }else if (note.type === 'note-canvas') {
+                        this.selectedEmptyNote = 'Canvas'
                     }
                     this.isEditModal = true;
                     this.isNewNoteModal = true;

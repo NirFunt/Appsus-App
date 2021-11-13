@@ -62,3 +62,12 @@
 .note-audio audio {
     width: 90%;
 }
+
+.note-canvas  {
+    border: lightgray 2px solid;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 10px;
+}
