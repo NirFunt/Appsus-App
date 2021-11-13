@@ -3,6 +3,7 @@ import noteImg from '../cmps/note-img.cmp.js';
 import noteTodos from '../cmps/note-todos.cmp.js';
 import noteVideo from '../cmps/note-video.cmp.js';
 import noteFilter from '../cmps/note-filter.cmp.js';
+import noteAudio from '../cmps/note-audio.cmp.js';
 
 import { noteService } from '../services/note.service.js';
 
@@ -12,7 +13,8 @@ export default {
         noteImg,
         noteTodos,
         noteVideo,
-        noteFilter
+        noteFilter,
+        noteAudio
     },
 
     template: `

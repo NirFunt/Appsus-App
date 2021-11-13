@@ -3,6 +3,7 @@
     border: lightgray 2px solid;
     display: flex;
     flex-direction: column;
+    align-items: center;
     text-align: center;
     gap: 10px;
     padding: 10px;
@@ -46,6 +47,18 @@
 }
 
 .note-img  img{
-    width: 80%;
+    width: 90%;
     margin: auto;
+}
+
+.note-audio  {
+    border: lightgray 2px solid;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 10px;
+}
+.note-audio audio {
+    width: 90%;
 }

@@ -2,6 +2,7 @@ import noteTxt from '../cmps/note-txt.cmp.js';
 import noteImg from '../cmps/note-img.cmp.js';
 import noteTodos from '../cmps/note-todos.cmp.js';
 import noteVideo from '../cmps/note-video.cmp.js';
+import noteAudio from '../cmps/note-audio.cmp.js';
 
 import {eventBus} from '../services/event-bus.service.js';
 
@@ -13,6 +14,7 @@ export default {
         noteImg,
         noteTodos,
         noteVideo,
+        noteAudio
     },
 
     template: `
@@ -31,6 +33,7 @@ export default {
                 <option>Image</option>
                 <option>Video</option>
                 <option>Todos</option>
+                <option>Audio</option>
             </select>
 
             <div v-if="selectedEmptyNote==='Text'" >
@@ -63,6 +66,13 @@ export default {
            
             <ul> <li v-for="todo in emptyNote.info.todos" class="todo-list-add"> {{todo.txt}}
             <button @click="removeTempTodo(todo.id)">x</button></li></ul>
+            </div>
+
+            <div v-if="selectedEmptyNote==='Audio'" >
+            <label> Enter Audio Title </label>
+            <input type="text" v-model="emptyNote.info.title">
+            <label> Add Audio Url </label>
+            <input type="text" v-model="emptyNote.info.url" >
             </div>
 
             <article class="add-edit-buttons">
@@ -116,6 +126,9 @@ export default {
                     this.emptyTodo = noteService.getEmptyTodo()
                     break;
                 }
+                case 'Audio' : {
+                    newNote = noteService.getEmptyAudioNote();
+                }
             }
             this.emptyNote = newNote;
         },
@@ -154,6 +167,9 @@ export default {
                     } else if (note.type === 'note-todos') {
                         this.selectedEmptyNote = 'Todos'
                         this.emptyTodo = noteService.getEmptyTodo()
+                    }
+                    else if (note.type === 'note-audio') {
+                        this.selectedEmptyNote = 'Audio'
                     }
                     this.isEditModal = true;
                     this.isNewNoteModal = true;

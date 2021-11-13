@@ -27,7 +27,7 @@
     /* justify-items: start; */
     align-items: start;
 
-    grid-template-columns: repeat(auto-fit, minmax(100px, 200px));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 250px));
     /* grid-template-rows: repeat(auto-fill, minmax(100px, 200px)); */
     /* grid-auto-flow: row dense; */
     /* grid-auto-flow: column dense; */
@@ -43,7 +43,7 @@
     display: grid;
     gap: 15px;
     align-items: start;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 200px));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 250px));
     justify-content: center;
 }
 

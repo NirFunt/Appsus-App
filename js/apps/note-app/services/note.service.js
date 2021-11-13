@@ -17,7 +17,8 @@ export const noteService = {
   getEmptyVideoNote,
   getEmptyTodosNote,
   getEmptyTodo,
-  duplicateNote
+  duplicateNote,
+  getEmptyAudioNote
 }
 
 const NOTES_KEY = 'notes';
@@ -180,6 +181,20 @@ function getEmptyTodo() {
   return todo;
 }
 
+function getEmptyAudioNote() {
+  const noteAudio = {
+    id: utilService.makeId(),
+    type: "note-audio",
+    isPinned: false,
+    info: {
+      title: "",
+      url: ''
+      , color: 'bcg-purple'
+    }
+  }
+  return noteAudio;
+}
+
 
 
 function _createNotes() {
@@ -243,6 +258,17 @@ function _createNotes() {
           "color": "bcg-light-green"
         }
       },
+      {
+        "id":utilService.makeId(),
+        "type": "note-audio",
+        "isPinned" :true,
+        "info" : {
+          "title" : "Led Zeppelin - All My Love",
+          "url" : "audio/Led Zeppelin_ All My Love (With Lyrics) (mp3cut.net).mp3",
+          "color": "bcg-turquoise"
+        }
+      },
+    
 
 
       {
@@ -316,6 +342,16 @@ function _createNotes() {
           "color": "bcg-turquoise"
         }
       },
+      {
+        "id":utilService.makeId(),
+        "type": "note-audio",
+        "isPinned" :false,
+        "info" : {
+          "title" : "Nice Song",
+          "url" : "http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Sevish_-__nbsp_.mp3",
+          "color": "bcg-turquoise"
+        }
+      }
     ]
   }
   storageService.saveToStorage(NOTES_KEY, notes);

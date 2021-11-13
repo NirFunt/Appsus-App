@@ -6,11 +6,16 @@ export default {
     },
     props: ['info', 'noteid'],
     template: `
-<section class="note-img">
+<section class="note-audio">
    <h3> {{info.title}} </h3>
-   <img :src="info.url">
+   <audio controls >
+  <source :src="info.url" type="audio/mpeg">
+  </audio>
    <note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor"
    @pinned="pin" @edit="editNote" @duplicate="duplicate" />
+
+ 
+
 </section>
     `
     ,
