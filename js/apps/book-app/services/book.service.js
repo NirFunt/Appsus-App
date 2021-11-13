@@ -54,7 +54,7 @@ function putBook(book) {
 
 
 function getFromAPI(server,input) {
-  if (Date.now()- lastUpdate <1000*10) {
+  // if (Date.now()- lastUpdate <1000*60*60) {
     if (googleBooksCache[input]) {
       console.log('takin data from cache')
       storageService.save(input, googleBooksCache[input]);
@@ -67,7 +67,7 @@ function getFromAPI(server,input) {
       console.log('taking data from local storage');
       return Promise.resolve(googleBooksCache[input]);
     }
-  } else {
+  // } else {
 
     if (!googleBooksCache[input]) {
       console.log('taking data from server');
@@ -87,7 +87,7 @@ function getFromAPI(server,input) {
         })
       return prm;
     }
-   }
+  //  }
  
 }
 

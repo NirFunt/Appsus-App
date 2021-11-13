@@ -136,6 +136,9 @@
 
 /* BOOK ADD PAGE  */
 
+.book-add {
+    background-image: url('../../../../img/note-app3.jpg');
+}
 
 .add-new-book {
     text-align: center;
@@ -154,6 +157,7 @@
     flex-wrap: wrap;
     list-style-type: none;
     gap: 20px;
+    margin: 0;
 }
 
 .new-book-search-list li{

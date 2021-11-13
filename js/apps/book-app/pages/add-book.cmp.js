@@ -22,12 +22,11 @@ export default {
     `,
     data() {
         return {
-            searchedInput: '',
+            searchedInput: 'funny',
             googleBooks: ''
         };
     },
     created() {
-        this.searchedInput = 'funny';
         this.goSearch();
     },
     destroyed() {
