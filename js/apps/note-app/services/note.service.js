@@ -351,6 +351,15 @@ function _createNotes() {
           "url" : "http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Sevish_-__nbsp_.mp3",
           "color": "bcg-turquoise"
         }
+      },
+      {
+        "id":utilService.makeId(),
+        "type": "note-canvas",
+        "isPinned" :false,
+        "info" : {
+          "title" : "Nice canvas",
+          "color": "bcg-turquoise"
+        }
       }
     ]
   }

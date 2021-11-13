@@ -4,6 +4,7 @@ import noteTodos from '../cmps/note-todos.cmp.js';
 import noteVideo from '../cmps/note-video.cmp.js';
 import noteFilter from '../cmps/note-filter.cmp.js';
 import noteAudio from '../cmps/note-audio.cmp.js';
+import noteCanvas from '../cmps/note-canvas.cmp.js';
 
 import { noteService } from '../services/note.service.js';
 
@@ -14,7 +15,8 @@ export default {
         noteTodos,
         noteVideo,
         noteFilter,
-        noteAudio
+        noteAudio,
+        noteCanvas
     },
 
     template: `
