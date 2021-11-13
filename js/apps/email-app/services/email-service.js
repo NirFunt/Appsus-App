@@ -90,7 +90,9 @@ function query(filterBy = null) {
                 var subjectWords = email.subject.split(' ');
                 var words = bodyWords.concat(subjectWords);
                 var lowerCaseWords = words.map(word => word.toLowerCase())
-                if (lowerCaseWords.includes(filterBy.msg.toLowerCase())) {
+                var strForFilter = email.body + ' ' + email.subject + ' ' + email.from
+                var lowercaseStr = strForFilter.toLocaleLowerCase();
+                if (lowercaseStr.includes(filterBy.msg.toLowerCase())) {
                     return email
                 }
             })

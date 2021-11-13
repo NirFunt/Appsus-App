@@ -14,12 +14,7 @@ export default {
     <email-list 
         :emails="emails" @trash="moveToTrash" 
         @star="moveToStarred" @read="setRead" @filterTxt="setFilter"
-        v-if="emails" @selectFilter="setFilter"/>
-
-    <div class="empty-msg flex flex-column" v-else>
-        <img src="/img/empty.png">
-        <p><strong>{{ifEmptyMsg}}</strong></p>
-    </div>
+        @selectFilter="setFilter" :ifEmptyMsg="ifEmptyMsg"/>
 
 </section>
     `
@@ -51,6 +46,10 @@ export default {
                 .then(emails => {
                     this.emails = emails
                     this.countUnread();
+                    if (emails.length === 0) {
+                        this.emails = false;
+                        this.showEmptyMsg();
+                    }
                 })
         },
         countUnread() {
@@ -64,6 +63,9 @@ export default {
         },
         showEmptyMsg() {
             this.ifEmptyMsg = this.filterBy.charAt(0).toUpperCase() + this.filterBy.slice(1, this.filterBy.length) + ' folder is empty'
+            if (this.filterBy === 'read' || this.filterBy === 'unread' || this.filterBy === 'unstarred') {
+                this.ifEmptyMsg = 'No messages for preview'
+            }
             console.log(this.ifEmptyMsg);
         },
         moveToTrash(email) {
@@ -92,6 +94,7 @@ export default {
                 })
         },
         sendMessage(msg) {
+            console.log('msg', msg);
             emailService.save(msg)
                 .then(() => {
                     this.loadEmails();

@@ -37,7 +37,7 @@ export default {
                 <button @click="closeIfEmpty">X</button>
             </section>
             <section class="send-modal-body flex flex-column">
-                 <input type="text" placeholder="To" v-model="newMsg.to">
+                 <input type="text" placeholder="To" v-model="newMsg.to" @change="log">
                  <input type="text" placeholder="Subject" v-model="newMsg.subject">
                  <textarea rows="4" cols="50" v-model="newMsg.body"></textarea>
                  <div class="send-btns flex space-between"> 
@@ -117,9 +117,10 @@ export default {
         },
         send() {
             this.newMsg.status = 'sent';
+            console.log('this.newMsg', this.newMsg);
             console.log('sending....');
             this.$emit('send', this.newMsg)
-            this.clearMsg();
+            // this.clearMsg();
 
         },
         closeWithoutSaving() {
@@ -138,6 +139,9 @@ export default {
             this.newMsg.to = '';
             this.newMsg.subject = '';
             this.newMsg.body = '';
+        },
+        log() {
+            console.log('this.newMsg', this.newMsg);
         }
 
 
