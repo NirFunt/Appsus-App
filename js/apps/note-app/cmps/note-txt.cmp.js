@@ -10,7 +10,7 @@ export default {
 <h3> {{info.title}} </h3>
 <p> {{info.txt}} </p>
 <note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor"
-@pinned="pin" @edit="editNote"/>
+@pinned="pin" @edit="editNote" @duplicate="duplicate"/>
 
 </section>
     `
@@ -38,6 +38,9 @@ export default {
         },
         editNote() {
             this.$emit('edit', this.noteid)
+        },
+        duplicate (noteId) {
+            this.$emit ('duplicate', noteId);
         },
     },
  

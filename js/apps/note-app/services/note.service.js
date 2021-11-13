@@ -16,7 +16,8 @@ export const noteService = {
   getEmptyImgNote,
   getEmptyVideoNote,
   getEmptyTodosNote,
-  getEmptyTodo
+  getEmptyTodo,
+  duplicateNote
 }
 
 const NOTES_KEY = 'notes';
@@ -106,8 +107,12 @@ function changePinned(noteId) {
     .then(note => {
       note.isPinned = !note.isPinned;
       saveNote(note);
-    }
-    )
+    } )
+}
+
+function duplicateNote (noteId) {
+  return getNoteById(noteId)
+  .then (note => addNote(note))
 }
 
 function getEmptyTxtNote() {

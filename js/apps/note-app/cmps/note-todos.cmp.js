@@ -15,7 +15,7 @@ export default {
 </li> </ul>
 
 <note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor"
-@pinned="pin" @edit="editNote"/>
+@pinned="pin" @edit="editNote" @duplicate="duplicate"/>
 
 </section>
     `
@@ -49,6 +49,9 @@ export default {
         },
         editNote() {
             this.$emit('edit', this.noteid)
+        },
+        duplicate (noteId) {
+            this.$emit ('duplicate', noteId);
         },
     },
     computed: {

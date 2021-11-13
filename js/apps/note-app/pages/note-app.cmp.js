@@ -29,7 +29,7 @@ export default {
    :info="note.info"
    :noteid="note.id"
  @removeTodo="removeTodo($event)" @removeNote="removeNote"
-    @changeColor="changeColor" @pinned="pin" @toggleTodo="toggleTodo" @edit="editNote">
+    @changeColor="changeColor" @pinned="pin" @toggleTodo="toggleTodo" @edit="editNote" @duplicate="duplicate">
     </component>
     </section>
 <hr>
@@ -41,7 +41,7 @@ export default {
    :info="note.info"
    :noteid="note.id"
    @removeTodo="removeTodo($event)" @removeNote="removeNote"
-    @changeColor="changeColor"  @pinned="pin" @toggleTodo="toggleTodo" @edit="editNote" >
+    @changeColor="changeColor"  @pinned="pin" @toggleTodo="toggleTodo" @edit="editNote" @duplicate="duplicate" >
     </component>
     </section>
 
@@ -223,6 +223,10 @@ export default {
                 this.pinnedNotes = allNotes.filter(note => note.isPinned);
                 this.unpinnedNotes = allNotes.filter(note => !note.isPinned);
             });
+        },
+        duplicate (noteId) {
+            noteService.duplicateNote(noteId)
+            .then(() => this.query())
         }
     },
 

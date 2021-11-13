@@ -11,8 +11,7 @@ export default {
 <h3>{{info.label}} </h3>
 <iframe width="170" height="100":src="info.url"></iframe>
 <note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor"
-@edit="editNote"
-@pinned="pin"/>
+@edit="editNote"@pinned="pin" @duplicate="duplicate"/>
 
 </section>
     `
@@ -40,6 +39,9 @@ export default {
         },
         editNote() {
             this.$emit('edit', this.noteid)
+        },
+        duplicate (noteId) {
+            this.$emit ('duplicate', noteId);
         },
     },
  

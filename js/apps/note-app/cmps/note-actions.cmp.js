@@ -12,11 +12,12 @@ export default {
 </section>
 
 <section class="actions">
-<div @click="pin">📌</div>
-<div @click="changeColor" >🖌</div>
-<div @click="sendAsMail">📩</div>
-<div @click="editNote">📝</div>
-<div @click="trash">🗑</div>
+<div @click="pin" title="Pin">📌</div>
+<div @click="changeColor" title="Color" >🖌</div>
+<div @click="sendAsMail" title="Email">📩</div>
+<div @click="editNote" title="Edit">📝</div>
+<div @click="trash" title="Trash">🗑</div>
+<div @click="duplicateNote" title="Duplicate"> 🧬 </div>
 </section>
 </section>
     `
@@ -50,6 +51,9 @@ export default {
         },
         sendColor (color) {
             this.$emit('changeColor', {noteId: this.noteid, color: color})
+        },
+        duplicateNote () {
+            this.$emit('duplicate', this.noteid)
         }
     },
     computed : {
