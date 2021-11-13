@@ -18,7 +18,7 @@ export default {
     </div>
     <div class="search-bar">
         <form>
-        <input type="text" id="search" type="search" placeholder="Search mail" v-model="msg" @change="filterTxt">
+        <input type="text" id="search" placeholder="Search mail" v-model="msg" @change="filterTxt">
         <button type="submit" @click.stop>Go</button>    
         </form>
     </div>
