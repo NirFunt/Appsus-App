@@ -142,6 +142,27 @@ export default {
 
 
     },
+
+    watch: {
+    '$route.params.noteInfo': {
+        handler() {
+            const { noteInfo } = this.$route.params;
+            if (!noteInfo) return;
+            // console.log(noteInfo)
+            // console.log(this.$route.params)
+            if (noteInfo) this.sendMsgModal = true;
+            let queryStrings = noteInfo.split('&');
+            let subject = queryStrings[0].slice(6);
+            let body = queryStrings[1].slice(5);
+            // console.log(subject)
+            // console.log(body)
+            this.newMsg.subject = subject;
+            this.newMsg.body = body;
+        },
+        immediate: true
+    }
+    },
+
     computed: {
         expandNav() {
             console.log('hovering bro');

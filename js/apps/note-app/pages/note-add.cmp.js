@@ -170,6 +170,7 @@ export default {
             let text = queryStrings[1].slice(5);
             this.emptyNote.info.title = title;
             this.emptyNote.info.txt = text;
+            this.emptyNote.isPinned = true;
             this.addNote();
         }
 

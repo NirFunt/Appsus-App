@@ -18,6 +18,7 @@ export default {
                   <p>{{getLimitedTxt}}</p>
             </section>
             <section class="actions">
+                 <button @click="sendNote"> Send Note </button>
                  <button class="read-btn" @click.stop="markAsRead">
                  <i class="fas fa-envelope-open-text" v-if="!email.isRead"></i>
                  <i class="fas fa-envelope" v-else></i>
@@ -66,6 +67,9 @@ export default {
         // }
         check() {
             console.log(this.email.isStarred);
+        },
+        sendNote() {
+            this.$router.push(`/noteadd/convertemail/title=${this.email.subject}&text=${this.email.body}`)
         }
 
     }

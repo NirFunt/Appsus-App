@@ -102,8 +102,10 @@ export default {
     watch: {
         filterBy() {
             this.loadEmails()
-        }
+        },
     },
+
+
     computed: {
         // mails() {
         //     if (!this.filterBy) return this.emails

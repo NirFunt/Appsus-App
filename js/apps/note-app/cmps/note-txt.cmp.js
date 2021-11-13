@@ -43,7 +43,8 @@ export default {
             this.$emit ('duplicate', noteId);
         },
         sendMail (info) {
-            this.$router.push(`/noteadd/convertemail/title=${info.title}&text=${info.txt}`)
+            // this.$router.push(`/noteadd/convertemail/title=${info.title}&text=${info.txt}`)
+            this.$router.push(`/email/convertnote/title=${info.title}&text=${info.txt}`)
         }
       
     },

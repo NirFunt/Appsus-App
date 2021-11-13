@@ -39,6 +39,10 @@ const routes = [
         component: emailApp
     },
     {
+        path: '/email/convertnote/:noteInfo',
+        component: emailApp
+    },
+    {
         path: '/book',
         component: bookApp
     },
