@@ -1,4 +1,3 @@
-
 .addEditWindow {
     position: fixed;
     top: 30%;
@@ -11,7 +10,6 @@
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    background-image: url('../../../../img/note-edit-add2.jpg');
 }
 
 .addEditWindow div {
@@ -21,20 +19,20 @@
 }
 
 .add-edit-buttons {
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
 }
 
 .add-edit-buttons button {
-   background-color: rgb(153, 254, 255);
-   border-radius: 5px;
-   cursor: pointer;
-  }
+    background-color: rgb(153, 254, 255);
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-  .add-edit-buttons button:hover {
+.add-edit-buttons button:hover {
     background-color: rgb(148, 218, 255);
-   }
+}
 
 .add-note-btn {
     display: flex;
@@ -43,17 +41,17 @@
 }
 
 .add-note-btn button {
-   background-color: rgb(153, 254, 255);
-   border-radius: 10px;
-   font-size: 1.3rem;
-   border: rgb(148, 218, 255) 2px solid;
-   cursor: pointer;
-   transition: 0.5s;
+    background-color: rgb(153, 254, 255);
+    border-radius: 10px;
+    font-size: 1.3rem;
+    border: rgb(148, 218, 255) 2px solid;
+    cursor: pointer;
+    transition: 0.5s;
 }
 
 .add-note-btn button:hover {
     transform: scale(150%);
- }
+}
 
 .add-edit-todo-btn {
     margin-top: 10px;

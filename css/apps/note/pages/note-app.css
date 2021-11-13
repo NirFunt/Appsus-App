@@ -4,7 +4,8 @@
     align-items: center;
     gap: 15px;
     flex-wrap: wrap; */
-    background-image: url('../../../../img/note-app3.jpg');
+    /* background-image: url('../../../../img/note-app3.jpg'); */
+    /* background-image: linear-gradient(rgb(29, 0, 56), rgb(84, 67, 107), rgb(80, 203, 147), rgb(113, 239, 163)); */
 }
 
 .note-app h5 {
@@ -13,7 +14,7 @@
 }
 
 .note-app section {
-  /* border: gold 2px solid; */
+    /* border: gold 2px solid; */
 }
 
 .pinned-notes {
@@ -22,11 +23,9 @@
     gap: 15px;
     /* flex-wrap: wrap; */
     /* grid-template-columns: 1fr 1fr 1fr; */
-    
     /* align-self: start; */
     /* justify-items: start; */
     align-items: start;
-
     grid-template-columns: repeat(auto-fit, minmax(100px, 200px));
     /* grid-template-rows: repeat(auto-fill, minmax(100px, 200px)); */
     /* grid-auto-flow: row dense; */
@@ -65,5 +64,3 @@
     justify-content: space-between;
     gap: 10px;
 }
-
-

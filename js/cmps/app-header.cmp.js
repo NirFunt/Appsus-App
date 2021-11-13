@@ -6,8 +6,8 @@ export default {
 
     template: `
         <section class="app-header">
-        <h3> APPSUS </h3>
-        <nav> 
+        <h3 class="logo"> APPKEEPER </h3>
+        <nav class="header-nav"> 
         <router-link to="/"> Home </router-link> |
         <router-link to="/book"> Books </router-link> |
         <router-link to="/email"> Email </router-link> |

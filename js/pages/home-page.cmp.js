@@ -1,26 +1,26 @@
 export default {
     template: `
     
-<section class="home-page">
-
-  <h3> Home Page </h3>
-  <img src="img/home-page.jpg">
+<section class="home-page flex">
+  <h1> Welcome To <br>Appkeeper </h1>
+  <img src="img/tech.png" class="tech-img">
+  <!-- <img src="img/phone.png" class="phone-img"> -->
 </section>
     `
     ,
     data() {
         return {
-        
+
         };
     },
     created() {
-  
+
     },
     destroyed() {
-      
+
     },
     methods: {
-     
+
     },
- 
+
 }

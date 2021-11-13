@@ -3,24 +3,29 @@
 @import "./pages/home-page.css";
 @import "./pages/about-page.css";
 @import "./cmps/footer.css";
-
-
 /* NOTE */
+
 @import "./apps/note/pages/note-app.css";
 @import "./apps/note/cmps/note-types.css";
 @import "./apps/note/cmps/note-actions.css";
 @import "./apps/note/pages/note-add.css";
-
 /* BOOKS  */
-@import "./apps/books/pages/books.css";
 
+@import "./apps/books/pages/books.css";
 /* EMAIL  */
+
 @import "./parts/helpers.css";
 @import "./apps/email/email-style.css";
-
-
 .main-section {
-    height: 100vh;
-    background-image: url('../../../img/note-app3.jpg')
+    /* height: 100vh; */
 }
 
+body {
+    /* background-color: beige; */
+    margin: 0;
+    /* height: 100vh; */
+    /* overflow: hidden; */
+    /* background-image: linear-gradient(rgb(29, 0, 56), rgb(84, 67, 107), rgb(80, 203, 147), rgb(113, 239, 163)); */
+    /* background-image: linear-gradient(rgb(240, 233, 210), rgb(230, 221, 196), rgb(103, 137, 131), rgb(24, 29, 49)); */
+    background-image: linear-gradient(rgb(121, 180, 183), rgb(254, 251, 243), rgb(248, 240, 223), rgb(157, 157, 157));
+}

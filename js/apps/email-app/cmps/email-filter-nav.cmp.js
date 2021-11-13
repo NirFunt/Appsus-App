@@ -37,7 +37,7 @@ export default {
                 <button @click="closeIfEmpty">X</button>
             </section>
             <section class="send-modal-body flex flex-column">
-                 <input type="text" placeholder="To" v-model="newMsg.to" @change="log">
+                 <input type="text" placeholder="To" v-model="newMsg.from" @change="log">
                  <input type="text" placeholder="Subject" v-model="newMsg.subject">
                  <textarea rows="4" cols="50" v-model="newMsg.body"></textarea>
                  <div class="send-btns flex space-between"> 
@@ -66,19 +66,18 @@ export default {
             sendMsgModal: false,
             draftModal: false,
             newMsg: {
-                id: utilService.makeId(),
-                to: '',
+                from: '',
                 subject: '',
                 body: '',
                 status: ''
             },
-            iconTxt: {
-                inbox: '',
-                starred: '',
-                sent: '',
-                trash: '',
-                draft: ''
-            }
+            // iconTxt: {
+            //     inbox: '',
+            //     starred: '',
+            //     sent: '',
+            //     trash: '',
+            //     draft: ''
+            // }
             // isHover: false
         };
     },
@@ -117,9 +116,11 @@ export default {
         },
         send() {
             this.newMsg.status = 'sent';
+            this.newMsg.from = 'To: ' + this.newMsg.from;
             console.log('this.newMsg', this.newMsg);
             console.log('sending....');
             this.$emit('send', this.newMsg)
+            this.sendMsgModal = false;
             // this.clearMsg();
 
         },
@@ -148,23 +149,23 @@ export default {
     },
 
     watch: {
-    '$route.params.noteInfo': {
-        handler() {
-            const { noteInfo } = this.$route.params;
-            if (!noteInfo) return;
-            // console.log(noteInfo)
-            // console.log(this.$route.params)
-            if (noteInfo) this.sendMsgModal = true;
-            let queryStrings = noteInfo.split('&');
-            let subject = queryStrings[0].slice(6);
-            let body = queryStrings[1].slice(5);
-            // console.log(subject)
-            // console.log(body)
-            this.newMsg.subject = subject;
-            this.newMsg.body = body;
-        },
-        immediate: true
-    }
+        '$route.params.noteInfo': {
+            handler() {
+                const { noteInfo } = this.$route.params;
+                if (!noteInfo) return;
+                // console.log(noteInfo)
+                // console.log(this.$route.params)
+                if (noteInfo) this.sendMsgModal = true;
+                let queryStrings = noteInfo.split('&');
+                let subject = queryStrings[0].slice(6);
+                let body = queryStrings[1].slice(5);
+                // console.log(subject)
+                // console.log(body)
+                this.newMsg.subject = subject;
+                this.newMsg.body = body;
+            },
+            immediate: true
+        }
     },
 
     computed: {

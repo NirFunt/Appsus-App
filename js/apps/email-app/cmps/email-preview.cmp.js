@@ -18,7 +18,9 @@ export default {
                   <p>{{getLimitedTxt}}</p>
             </section>
             <section class="actions">
-                 <button @click="sendNote"> Send Note </button>
+                 <button @click="sendNote"> 
+                 <i class="fas fa-sticky-note"></i> 
+                 </button>
                  <button class="read-btn" @click.stop="markAsRead">
                  <i class="fas fa-envelope-open-text" v-if="!email.isRead"></i>
                  <i class="fas fa-envelope" v-else></i>
@@ -39,6 +41,7 @@ export default {
             let words = this.email.body.split(' ');
             var str = '';
             for (let i = 0; i < 10; i++) {
+                if (!words[i]) words[i] = '';
                 str += ' ' + words[i];
             }
             return str
