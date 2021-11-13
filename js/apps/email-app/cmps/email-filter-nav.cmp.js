@@ -42,7 +42,7 @@ export default {
                  <textarea rows="4" cols="50" v-model="newMsg.body"></textarea>
                  <div class="send-btns flex space-between"> 
                      <button class="send-btn" @click="send">Send</button>
-                     <button class="discard-btn">discard</button>
+                     <button class="discard-btn" @click="closeIfEmpty">discard</button>
                   </div>
             </section>
         </div>
