@@ -14,8 +14,7 @@
 
 .note-add section {
     /* max-height: 200px; */
-    max-width: 200px;
-    /* height: 250px; */
+    /* max-width: 200px; */
     margin-top: 10px;
 }
 
@@ -23,8 +22,8 @@
     position: relative;
     /* margin: 20px auto; */
     background-color: lightgray;
-    width: 350px;
-    max-height: 500px;
+    /* width: 350px; */
+    /* max-height: 500px; */
     padding: 15px 15px 35px 15px;
     display: flex;
     flex-direction: column;
