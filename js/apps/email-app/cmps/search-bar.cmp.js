@@ -6,11 +6,11 @@ export default {
     <div class="select-dropdown">
         <input type="checkbox">
        
-        <select name="mark"  class="fas fa-caret-down">
-        <option value="all">All</option>
+        <select name="mark" class="fas fa-caret-down" v-model="filter" @change="setFilter">
+        <option value="inbox">All</option>
         <option value="starred">Starred</option>
         <option value="unstarred">Unstarred</option>
-        <option value="read">Read</option>
+        <option value="read">Read </option>
         <option value="unread">Unread</option>
         </select>
         </input>
@@ -26,7 +26,8 @@ export default {
     ,
     data() {
         return {
-            msg: ''
+            msg: '',
+            filter: ''
         };
     },
     created() {
@@ -43,7 +44,13 @@ export default {
             }
             console.log(txtFilter);
             this.$parent.$emit('filterTxt', txtFilter);
+        },
+        setFilter() {
+            console.log(this.filter);
+            // if (this.filter === 'all') this.filter = 'inbox'
+            this.$parent.$emit('selectFilter', this.filter);
         }
+
 
     },
     computed: {

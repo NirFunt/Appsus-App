@@ -69,13 +69,26 @@ function query(filterBy = null) {
             return mails.filter(email => {
                 return email.isStarred;
             })
+        } else if (filterBy === 'unstarred') {
+            return mails.filter(email => {
+                return !email.isStarred;
+            })
+        } else if (filterBy === 'read') {
+            return mails.filter(email => {
+                return email.isRead;
+            })
+        } else if (filterBy === 'unread') {
+            return mails.filter(email => {
+                return !email.isRead;
+            })
         }
         else if (filterBy.filterBy === 'txt') {
             console.log('FAFSAFASFA');
-
             return mails.filter(email => {
                 console.log(email.body);
-                var words = email.body.split(' ');
+                var bodyWords = email.body.split(' ');
+                var subjectWords = email.subject.split(' ');
+                var words = bodyWords.concat(subjectWords);
                 var lowerCaseWords = words.map(word => word.toLowerCase())
                 if (lowerCaseWords.includes(filterBy.msg.toLowerCase())) {
                     return email

@@ -5,12 +5,22 @@ import emailList from "../cmps/email-list.cmp.js";
 export default {
     template: `    
 <section class="email-app flex space-between">
-    <email-filter-nav @filter="setFilter" @send="sendMessage" @filterStarred="setFilter" :user="user"/>
-    <email-list :emails="emails" @trash="moveToTrash" @star="moveToStarred" @read="setRead" @filterTxt="setFilter" v-if="emails" />
+
+    <email-filter-nav
+        @filter="setFilter" @send="sendMessage"
+        @filterStarred="setFilter" :user="user"
+        :unreadMsgs="unreadMsgs"/>
+
+    <email-list 
+        :emails="emails" @trash="moveToTrash" 
+        @star="moveToStarred" @read="setRead" @filterTxt="setFilter"
+        v-if="emails" @selectFilter="setFilter"/>
+
     <div class="empty-msg flex flex-column" v-else>
         <img src="/img/empty.png">
         <p><strong>{{ifEmptyMsg}}</strong></p>
     </div>
+
 </section>
     `
     ,
@@ -19,12 +29,13 @@ export default {
             emails: null,
             filterBy: 'inbox',
             user: null,
-            ifEmptyMsg: ''
+            ifEmptyMsg: '',
+            unreadMsgs: null
             // criteria: null
         }
     },
     created() {
-        this.loadEmails();
+        this.loadEmails()
         this.loadUser();
     },
     destroyed() {
@@ -39,13 +50,14 @@ export default {
             emailService.query(this.filterBy)
                 .then(emails => {
                     this.emails = emails
-                    // if (!this.emails.length) {
-                    //     console.log('empty arrays');
-                    //     console.log(this.emails);
-                    //     this.emails = false;
-                    //     this.showEmptyMsg();
-                    // }
+                    this.countUnread();
                 })
+        },
+        countUnread() {
+            this.unreadMsgs = this.emails.reduce(function (count, email) {
+                if (email.isRead) count++
+                return count
+            }, 0)
         },
         loadUser() {
             this.user = emailService.loggedUserQuery()

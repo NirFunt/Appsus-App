@@ -21,3 +21,13 @@
 .justify-center {
     justify-content: center;
 }
+
+/* Position */
+
+.relative {
+    position: relative
+}
+
+.absolute {
+    position: absolute
+}

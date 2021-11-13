@@ -1,15 +1,17 @@
 import { utilService } from '../../../services/util.service.js';
 
 export default {
-    props: ['user'],
+    props: ['user', 'unreadMsgs'],
     template: `
      <!-- @mouseenter="expandNav" @mouseleave="diminishNav" -->
 <section class="filter-nav flex flex-column align-center">
-    <button @click="sendMsgModal=true">+</button>
+    <button  @click="sendMsgModal=true">+</button>
+    <section class="flex relative">
     <button @click="filterInbox">
     <i class="fas fa-inbox"></i>
-    <span>{{iconTxt.inbox}}</span>
+    <span class="msgs-left" v-if="unreadMsgs!=0">{{unreadMsgs}}</span>
     </button>
+    </section>  
     <button @click="filterStarred">
     <i class="far fa-star"></i>
     <!-- <span>iconTxt.starred</span> -->
@@ -162,6 +164,16 @@ export default {
                 draft: ''
             }
             return this.iconTxt
+        },
+        countUnread() {
+            console.log(this.emails);
+            // var unreadMsgs = this.emails.map(function (email, count) {
+            //     if (email.isRead) count++;
+            //     return count
+            // }, 0)
+            // console.log(unreadMsgs);
+            // return unreadMsgs
+
         }
 
     },
