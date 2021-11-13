@@ -8,6 +8,16 @@ export default {
     template: `
 <section class="note-canvas">
    <h3> {{info.title}} </h3>
+   <div class="canvas-btns"> 
+   <input type="color" v-model="gDrawValues.borderColor">
+   <select v-model="gDrawValues.shape">
+                <option value="line">Line</option>
+                <option value="lines">Lines</option>
+                <option value="rod">Rod</option>
+                <option value="square">Square</option>
+            </select>
+            <button><a :href="saveUrl" @click="onSave(this)" download="">Save</a></button>
+            </div>
    <section class="canvas-container">
             <canvas class="main-canvas" height="150" width="250" ref="theCanvas"></canvas>
         </section>
@@ -27,6 +37,8 @@ export default {
                 shape: 'line',
                 isClicked: false
             },
+            saveUrl : '',
+            
         };
     },
     mounted() {
@@ -80,12 +92,68 @@ export default {
         onUp() {
             this.gDrawValues.isClicked = false;
             console.log('up')
-        }, onDraw(ev) {
+        },  onDraw(ev) {
             var { offsetX, offsetY } = ev;
-            this.drawLine(offsetX, offsetY);
-        }, drawLine(startX, startY) {
+        
+            switch (this.gDrawValues.shape) {
+                case 'line':
+                    this.drawLine(offsetX, offsetY);
+                    break;
+                case 'lines':
+                    this.drawLines(offsetX, offsetY);
+                    break;
+                case 'rod':
+                    this.drawLinePoles(offsetX, offsetY);
+                    break;
+                case 'square':
+                    this.drawSquare(offsetX, offsetY, 100, 100);
+                    break;
+            }
+        }
+        , drawLine(startX, startY) {
             var endX = startX + 1;
             var endY = startY + 1;
+            this.gCtx.beginPath();
+            this.gCtx.moveTo(startX, startY);
+            this.gCtx.lineTo(endX, endY);
+            this.gCtx.lineWidth = 4;
+            this.gCtx.strokeStyle = this.gDrawValues.borderColor;
+            this.gCtx.stroke();
+        }, drawLinePoles(startX, startY) {
+            var endX = startX + 100;
+            var endY = startY + 100;
+            this.gCtx.beginPath();
+            this.gCtx.moveTo(startX, startY);
+            this.gCtx.lineTo(endX, endY);
+            this.gCtx.lineWidth = 4;
+            this.gCtx.strokeStyle = gDrawValues.borderColor;
+            this.gCtx.stroke();
+        },
+        
+         drawSquare(startX, startY, endX, endY) {
+            this.gCtx.beginPath();
+            this.gCtx.rect(startX, startY, 30, 30);
+            this.gCtx.fillStyle = this.gDrawValues.shapeColor;
+            this.gCtx.fillRect(startX, startY, 30, 30);
+            this.gCtx.strokeStyle = this.gDrawValues.borderColor;
+            this.gCtx.lineWidth = 4;
+            this.gCtx.stroke();
+        }, onSave(elLink) {
+            const data = this.gElCanvas.toDataURL();
+            this.saveUrl = data;
+            elLink.download = 'canvas-download.jpeg';
+        },
+         drawLines(startX, startY) {
+            this.drawLine(startX - 20, startY - 20);
+            this.drawLine(startX - 30, startY - 30);
+            this.drawLine(startX - 40, startY - 40);
+            this.drawLine(startX, startY);
+            this.drawLine(startX + 10, startY + 10);
+            this.drawLine(startX + 20, startY + 30);
+            this.drawLine(startX + 3, startY + 30);
+        }, drawLinePoles(startX, startY) {
+            var endX = startX + 50;
+            var endY = startY + 50;
             this.gCtx.beginPath();
             this.gCtx.moveTo(startX, startY);
             this.gCtx.lineTo(endX, endY);
