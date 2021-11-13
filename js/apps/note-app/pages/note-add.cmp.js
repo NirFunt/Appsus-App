@@ -3,6 +3,8 @@ import noteImg from '../cmps/note-img.cmp.js';
 import noteTodos from '../cmps/note-todos.cmp.js';
 import noteVideo from '../cmps/note-video.cmp.js';
 
+import {eventBus} from '../services/event-bus.service.js';
+
 import { noteService } from '../services/note.service.js';
 
 export default {
@@ -126,7 +128,13 @@ export default {
             this.isNewNoteModal = false;
             if (this.emptyNote) noteService.addNote(this.emptyNote)
             noteService.query()
-                .then(notes => this.$router.push('/note'))
+                .then(notes =>  {
+                    this.$router.push('/note');
+                    // eventBus.$emit('showMsg',
+                    //     {
+                    //         txt: `a new note ${this.emptyNote.title} was added!`
+                    //     })
+                })
         },
         removeTempTodo(todoId) {
             console.log(todoId)

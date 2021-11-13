@@ -1,10 +1,10 @@
-import { eventBus } from '../services/event-bus.service.js';
+import { eventBus } from '../../../services/event-bus.service.js';
 
 export default {
     template: `
         <div v-if="msg" class="user-msg" :class="msg.type">
             <p>{{msg.txt}} </p>
-            <router-link :to="msg.url"> Go To Book </router-link>
+            <!-- <router-link :to="msg.url"> Go To Book </router-link> -->
         </div>
      
     `,
