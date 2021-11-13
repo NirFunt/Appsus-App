@@ -9,6 +9,7 @@
 
 .note-app h5 {
     margin: 10px 10px;
+    text-align: center;
 }
 
 .note-app section {
@@ -26,12 +27,12 @@
     /* justify-items: start; */
     align-items: start;
 
-    grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 200px));
     /* grid-template-rows: repeat(auto-fill, minmax(100px, 200px)); */
     /* grid-auto-flow: row dense; */
     /* grid-auto-flow: column dense; */
     /* grid-auto-flow: dense; */
-
+    justify-content: center;
 }
 
 .unpinned-notes {
@@ -42,7 +43,8 @@
     display: grid;
     gap: 15px;
     align-items: start;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 200px));
+    justify-content: center;
 }
 
 .done {
