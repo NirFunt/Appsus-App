@@ -8,8 +8,8 @@ export default {
                 <label class="checkbox" for="myCheckBox">
                     <input class="checkbox-input" type="checkbox"  id="myCheckBox" name="pageCheckbox" @click.stop>
                 </label>
-                 <span class="star"  @click.stop="markStarred">
-                 <i class="far fa-star"></i>
+                 <span class="star" @click.stop="markStarred"  @click="check"> 
+                 <i class="far fa-star" :class="{yellow:email.isStarred}"></i>
                  </span>
                  <p>{{email.from}}</p>
             </section>
@@ -64,6 +64,9 @@ export default {
         //         })
         //     this.$parent.$emit('filter', this.email.id);
         // }
+        check() {
+            console.log(this.email.isStarred);
+        }
 
     }
 }
