@@ -162,14 +162,23 @@ export default {
         goBackToNote () {
             this.$router.push('/note')
         },
+        convertEmail(email) {
+            console.log(email)
+            this.selectedEmptyNote = 'Text'
+            this.emptyNote = noteService.getEmptyTxtNote();
+            this.emptyNote.info.label = email;
+            console.log(this.emptyNote);
+        }
 
     },
     watch: {
         '$route.params.noteId': {
             handler() {
                 const { noteId } = this.$route.params;
-                console.log('no note id')
+                console.log(this.$route.params)
+                if (this.$route.params.emailInfo) this.convertEmail(this.$route.params.emailInfo)
                 if (!noteId) return;
+                console.log('asdsad')
                 this.editNote(noteId);
             },
             immediate: true

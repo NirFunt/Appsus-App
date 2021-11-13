@@ -31,6 +31,10 @@ const routes = [
         component: noteAdd
     },
     {
+        path: '/noteadd/email/:emailInfo',
+        component: noteAdd
+    },
+    {
         path: '/email',
         component: emailApp
     },

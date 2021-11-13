@@ -29,9 +29,7 @@ export default {
 
     },
     methods: {
-      
         filter () {
-           
             setTimeout ( () => {
                 this.$emit('filtered',{... this.filterBy});
             } ,100)
