@@ -10,7 +10,7 @@ export default {
 <h3> {{info.title}} </h3>
 <p> {{info.txt}} </p>
 <note-actions :info="info" :noteid="noteid" @removeNote="removeNote" @changeColor="changeColor"
-@pinned="pin" @edit="editNote" @duplicate="duplicate"/>
+@pinned="pin" @edit="editNote" @duplicate="duplicate" @sendMail="sendMail"/>
 
 </section>
     `
@@ -42,6 +42,10 @@ export default {
         duplicate (noteId) {
             this.$emit ('duplicate', noteId);
         },
+        sendMail (info) {
+            this.$router.push(`/noteadd/convertemail/title=${info.title}&text=${info.txt}`)
+        }
+      
     },
  
 }

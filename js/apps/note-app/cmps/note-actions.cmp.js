@@ -41,7 +41,7 @@ export default {
             this.isColorPicker = !this.isColorPicker;
         },
         sendAsMail() {
-
+            this.$emit('sendMail',this.info)
         },
         editNote() {
             this.$emit('edit', this.noteid)

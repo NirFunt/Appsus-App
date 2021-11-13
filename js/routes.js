@@ -31,7 +31,7 @@ const routes = [
         component: noteAdd
     },
     {
-        path: '/noteadd/email/:emailInfo',
+        path: '/noteadd/convertemail/:emailInfo',
         component: noteAdd
     },
     {

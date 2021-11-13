@@ -77,13 +77,13 @@ export default {
         return {
             isNewNoteModal: false,
             selectedEmptyNote: 'Video',
-            emptyNote: null ,
+            emptyNote: null,
             emptyTodo: '',
-            isEditModal:false,
+            isEditModal: false,
         };
     },
     created() {
-      this.emptyNote = noteService.getEmptyVideoNote();
+        this.emptyNote = noteService.getEmptyVideoNote();
     },
     destroyed() {
 
@@ -126,7 +126,7 @@ export default {
             this.isNewNoteModal = false;
             if (this.emptyNote) noteService.addNote(this.emptyNote)
             noteService.query()
-            .then(notes =>this.$router.push('/note'))
+                .then(notes => this.$router.push('/note'))
         },
         removeTempTodo(todoId) {
             console.log(todoId)
@@ -151,23 +151,26 @@ export default {
                     this.isNewNoteModal = true;
                 })
         },
-        updateNote () {
+        updateNote() {
             this.isEditModal = false;
             this.isNewNoteModal = false;
-            noteService.editNote (this.emptyNote)
+            noteService.editNote(this.emptyNote)
             noteService.query()
-            .then(notes =>this.$router.push('/note'))
-            
+                .then(notes => this.$router.push('/note'))
+
         },
-        goBackToNote () {
+        goBackToNote() {
             this.$router.push('/note')
         },
-        convertEmail(email) {
-            console.log(email)
+        convertEmail(emailParams) {
             this.selectedEmptyNote = 'Text'
             this.emptyNote = noteService.getEmptyTxtNote();
-            this.emptyNote.info.label = email;
-            console.log(this.emptyNote);
+            let queryStrings = emailParams.split('&');
+            let title = queryStrings[0].slice(6);
+            let text = queryStrings[1].slice(5);
+            this.emptyNote.info.title = title;
+            this.emptyNote.info.txt = text;
+            this.addNote();
         }
 
     },
@@ -182,7 +185,8 @@ export default {
                 this.editNote(noteId);
             },
             immediate: true
-        }
+        },
+
     },
 
 }
