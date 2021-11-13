@@ -38,7 +38,9 @@ function query(filterBy = null) {
           if ((filterBy.isNoteText && note.type === 'note-txt') ||
             (filterBy.isNoteVideo && note.type === 'note-video') ||
             (filterBy.isNoteImage && note.type === 'note-img') ||
-            (filterBy.isNoteTodos && note.type === 'note-todos')) { return true; }
+            (filterBy.isNoteTodos && note.type === 'note-todos')||
+            (filterBy.isNoteAudio && note.type === 'note-audio') ||
+            (filterBy.isNoteCanvas && note.type === 'note-canvas')) { return true; }
           return false;
         } else return false;
 
@@ -46,7 +48,9 @@ function query(filterBy = null) {
           if ((filterBy.isNoteText && note.type === 'note-txt') ||
             (filterBy.isNoteVideo && note.type === 'note-video') ||
             (filterBy.isNoteImage && note.type === 'note-img') ||
-            (filterBy.isNoteTodos && note.type === 'note-todos')) return true;
+            (filterBy.isNoteTodos && note.type === 'note-todos') ||
+            (filterBy.isNoteAudio && note.type === 'note-audio') ||
+            (filterBy.isNoteCanvas && note.type === 'note-canvas')) { return true; }
           return false;
         } else return false;
       })

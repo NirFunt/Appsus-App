@@ -9,20 +9,25 @@ export default {
         <input type="text" v-model="filterBy.name" @input="filter">
 
         <input type="checkbox" v-model="filterBy.isNoteText" @click="filter" >
-        <label> Text </label>
+         Text 
         <input type="checkbox" v-model="filterBy.isNoteVideo" @click="filter" >
-        <label> Video </label>
+         Video 
         <input type="checkbox" v-model="filterBy.isNoteImage" @click="filter" >
-        <label> Image </label>
+         Image 
         <input type="checkbox" v-model="filterBy.isNoteTodos" @click="filter" >
-        <label> Todos </label>
+         Todos 
+        <input type="checkbox" v-model="filterBy.isNoteAudio" @click="filter" >
+         Audio 
+        <input type="checkbox" v-model="filterBy.isNoteCanvas" @click="filter" >
+        Canvas 
       
         </section>
     `,
 
     data() {
         return {
-         filterBy : {name : '', isNoteText : true, isNoteVideo : true, isNoteImage : true, isNoteTodos : true},
+         filterBy : {name : '', isNoteText : true, isNoteVideo : true, isNoteImage : true,
+          isNoteTodos : true,isNoteAudio:true, isNoteCanvas: true }
         };
     },
     created() {
