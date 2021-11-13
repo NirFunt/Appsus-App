@@ -9,7 +9,7 @@
 @import "./apps/note/pages/note-app.css";
 @import "./apps/note/cmps/note-types.css";
 @import "./apps/note/cmps/note-actions.css";
-@import "./apps/note/cmps/note-edit-add.css";
+@import "./apps/note/pages/note-add.css";
 
 /* BOOKS  */
 @import "./apps/books/pages/books.css";

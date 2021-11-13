@@ -20,7 +20,7 @@ export default {
     
     <div class="add-note-filter">
     <note-filter @filtered="setFilter"/> 
-    <router-link to="/noteadd" class="add-new-note222"> <button> Add New Note </button> </router-link>
+    <router-link to="/noteadd" class="add-new-note"> <button> Add New Note </button> </router-link>
     </div>
 
     <h5> PINNED </h5>

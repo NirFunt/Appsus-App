@@ -1,17 +1,30 @@
+import noteTxt from '../cmps/note-txt.cmp.js';
+import noteImg from '../cmps/note-img.cmp.js';
+import noteTodos from '../cmps/note-todos.cmp.js';
+import noteVideo from '../cmps/note-video.cmp.js';
+
 import { noteService } from '../services/note.service.js';
 
 export default {
     components: {
+        noteTxt,
+        noteImg,
+        noteTodos,
+        noteVideo,
     },
 
     template: `
     <section class="note-add">
 
-    <router-link to="/noteadd" class="add-new-note222"> <button> Add New Note </button> </router-link>
+    <component :class="emptyNote.info.color" v-if="emptyNote"
+   :is="emptyNote.type"
+   :info="emptyNote.info"
+   :noteid="emptyNote.id">
+    </component>
 
     <section class="addEditWindow">
         <h1> Add New Note </h1>
-            <select v-model="selectedEmptyNote" @change="emptyNoteTypeChosen" value="Text">
+            <select v-model="selectedEmptyNote" @change="emptyNoteTypeChosen" value="Video">
                 <option>Text</option>
                 <option>Image</option>
                 <option>Video</option>
@@ -53,7 +66,7 @@ export default {
             <article class="add-edit-buttons">
             <button @click="addNote" v-if="!isEditModal"> Add </button>
             <button @click="updateNote" v-if="isEditModal"> Update </button>
-            <button @click="closeAddEditModal"> Go Back </button>
+            <button @click="goBackToNote"> Go Back </button>
             </article>
     </section>
 
@@ -63,14 +76,14 @@ export default {
     data() {
         return {
             isNewNoteModal: false,
-            selectedEmptyNote: '',
-            emptyNote: null,
+            selectedEmptyNote: 'Video',
+            emptyNote: null ,
             emptyTodo: '',
             isEditModal:false,
         };
     },
-    created() {
-       
+    mounted() {
+      this.emptyNote = noteService.getEmptyVideoNote();
     },
     destroyed() {
 
@@ -145,9 +158,8 @@ export default {
             .then(notes =>this.$router.push('/note'))
             
         },
-        closeAddEditModal () {
-            this.isNewNoteModal = false;
-            this.isEditModal =false;
+        goBackToNote () {
+            this.$router.push('/note')
         },
 
     },

@@ -164,7 +164,7 @@ function getEmptyTodosNote() {
     isPinned: false,
     info: {
       label: "",
-      color: '',
+      color: 'bcg-purple',
       todos: []
     }
   }
